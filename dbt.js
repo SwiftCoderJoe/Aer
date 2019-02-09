@@ -1,5 +1,5 @@
 const { CommandoClient } = require(`discord.js-commando`);
-﻿const fsd = "/Users/Kids/Documents/DBTS/"
+﻿const fsd = "/Users/Kids/Documents/GitHub/dbt-beta/"
 const path = require(`path`);
 
 //discord stuff
@@ -28,7 +28,7 @@ client.registry
     /*[`mods`, `Moderation related commands.`],*/
     //[`owner`, `Owner-only commands.`],
     [`info`, `Informative commands.`]
-])
+  ])
   .registerDefaultGroups()
   .registerDefaultCommands({
     eval: false
