@@ -5,6 +5,7 @@ module.exports = (client, msg) => {
     name: `points`
   });
 
+  var d = new Date();
 
   if (msg.author.bot) return;
 
@@ -16,18 +17,22 @@ module.exports = (client, msg) => {
       user: msg.author.id,
       guild: msg.guild.id,
       points: 0,
-      level: 1
+      level: 1,
+      lastPointMsg: 0
     });
 
-    client.points.math(key, `+`, 0, `points`);
+    var timeSent = d.getTime();
 
-    client.points.inc(key, `points`);
+    if (client.points.get(key, 'lastPointMsg') < (timeSent - 60000)) {
+      client.points.inc(key, `points`);
+      client.points.set(key, timeSent, 'lastPointMsg');
+    }
 
     const curLevel = Math.floor(
       0.25 * Math.sqrt(client.points.get(key, `points`))
     );
 
-    console.log(`User ${msg.author} now has ${client.points.get(key, 'points')} points. Level ${curLevel} expected, level ${client.points.get(key, 'level')}`);
+    console.log(`User ${msg.author} now has ${client.points.get(key, 'points')} points. Level ${curLevel} expected, level ${client.points.get(key, 'level')}, lastSent = ${client.points.get(key, 'lastPointMsg')}`);
 
     if (client.points.get(key, `level`) < curLevel) {
       msg.reply(`You've leveled up to level **${curLevel}**!`);
