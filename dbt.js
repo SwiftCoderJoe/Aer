@@ -27,7 +27,8 @@ client.registry
     [`fun`, `Very fun commands ;)`],
     /*[`mods`, `Moderation related commands.`],*/
     //[`owner`, `Owner-only commands.`],
-    [`info`, `Informative commands.`]
+    [`info`, `Informative commands.`],
+    [`userdata`, `Shows data about a particular user.`]
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
