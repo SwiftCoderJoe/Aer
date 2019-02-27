@@ -16,10 +16,21 @@ module.exports = class LeaderboardCommand extends Command {
   }
   run(msg) {
     try {
-      const filtered = this.client.data
+      let sql = `SELECT DISTINCT points points, level level FROM users WHERE guild = ${msg.guild.id} ORDER BY points`;
+      var sorted = []
+
+      db.all(sql, [], (err, rows) => {
+        if (err) {
+          throw err;
+        }
+        rows.forEach((row) => {
+          sorted.push(row);
+        });
+      });
+      /*const filtered = this.client.data
         .filter(p => p.guild === msg.guild.id)
         .array();
-      const sorted = filtered.sort((a, b) => b.points - a.points);
+      const sorted = filtered.sort((a, b) => b.points - a.points); */
       const top10 = sorted.splice(0, 10);
       const embed = new RichEmbed()
         .setTitle(`Leaderboard`)

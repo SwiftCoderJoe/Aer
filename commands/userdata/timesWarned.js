@@ -22,7 +22,7 @@ module.exports = class warnsCommand extends Command {
   run(msg, { user } ) {
     try {
       const key = `${msg.guild.id}-${user.id}`;
-      msg.say(`User ${user.username} has been warned ${msg.author.data.get(key, `warnTimes`)}`);
+      msg.say(`User ${user.username} has been warned ${db.run(`SELECT warntimes FROM users WHERE key = ${key};`)}`);
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${
