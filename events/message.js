@@ -18,13 +18,12 @@ module.exports = (client, db, msg) => {
   points: 0,
   level: 1,
   lastPointMsg: 0,
-  warnTimes: 0
+  warntimes: 0
   });
   */
 
   const stmt = db.prepare(`SELECT * FROM users WHERE key = ${key};`)
   userData = stmt.get();
-  console.log(userData);
 
   let badWords = [`fuck`, `shit`, `ass`, `bitch`];
 
@@ -33,11 +32,11 @@ module.exports = (client, db, msg) => {
     .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
     .catch(console.error);
     msg.reply(`Why so salty? No bad language in ${msg.guild}`);
-    sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warnTimes + 1} WHERE key = ${key}`)
+    sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = ${key};`);
     sql.run();
     const channel = msg.guild.channels.find(ch => ch.name === 'logs');
     if (channel) {
-      channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warnTimes + 1}`);
+      channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`);
     }
   }
 

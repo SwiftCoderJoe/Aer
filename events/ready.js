@@ -18,6 +18,7 @@
     for(var i = 0; i < guildMembers.length; i++) {
       console.log(i);
       let guildUser = guildMembers[i];
+      if (guildUser.user.bot) return;
       var key = `${guild.id}-${guildUser.user.id}`;
       let stmt = db.prepare(`INSERT OR IGNORE INTO users (key) SELECT (${key}) WHERE NOT EXISTS (SELECT 1 FROM users WHERE key = "${key}");`);
       let changes = stmt.run()

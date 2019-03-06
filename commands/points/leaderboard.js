@@ -16,21 +16,18 @@ module.exports = class LeaderboardCommand extends Command {
   }
   run(msg) {
     try {
-      let sql = `SELECT DISTINCT points points, level level FROM users WHERE guild = ${msg.guild.id} ORDER BY points`;
-      var sorted = []
+      const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
+      const Database = require(`better-sqlite3`);
+      const db = new Database(`${fsd}db/Data.db`, { /*verbose: console.log*/ });
 
-      db.all(sql, [], (err, rows) => {
-        if (err) {
-          throw err;
-        }
-        rows.forEach((row) => {
-          sorted.push(row);
-        });
-      });
+      let sql = db.prepare(`SELECT DISTINCT points points, level level, user user FROM users WHERE guild = ${msg.guild.id} ORDER BY points;`);
+
+      var sorted = sql.all()
       /*const filtered = this.client.data
         .filter(p => p.guild === msg.guild.id)
         .array();
       const sorted = filtered.sort((a, b) => b.points - a.points); */
+      sorted.reverse();
       const top10 = sorted.splice(0, 10);
       const embed = new RichEmbed()
         .setTitle(`Leaderboard`)

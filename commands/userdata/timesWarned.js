@@ -21,8 +21,13 @@ module.exports = class warnsCommand extends Command {
   }
   run(msg, { user } ) {
     try {
+      const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
+      const Database = require(`better-sqlite3`);
+      const db = new Database(`${fsd}db/Data.db`, { /*verbose: console.log*/ });
       const key = `${msg.guild.id}-${user.id}`;
-      msg.say(`User ${user.username} has been warned ${db.run(`SELECT warntimes FROM users WHERE key = ${key};`)}`);
+      const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = ${key};`);
+      const warns = stmt.get();
+      msg.say(`User ${user.username} has been warned ${warns.warntimes} times.`);
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${
