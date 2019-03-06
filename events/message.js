@@ -43,7 +43,7 @@ module.exports = (client, db, msg) => {
 
   let timeSent = d.getTime();
 
-  if (prevTime < (timeSent - 60000)) {
+  if (userData.lastPointMsg < (timeSent - 60000)) {
     let sql = db.prepare(`UPDATE users SET points = ${userData.points + 1} WHERE key = ${key}`)
     sql.run()
     sql = db.prepare(`UPDATE users SET lastPointMsg = ${timeSent} WHERE key = ${key}`)
@@ -56,7 +56,7 @@ module.exports = (client, db, msg) => {
 
   console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`);
 
-  if (oldLevel < curLevel) {
+  if (userData.level < curLevel) {
     msg.reply(`You've leveled up to level **${curLevel}**!`);
     const newLevel = Math.floor(0.25 * Math.sqrt(userPoints)) //=== 0 ? 1 : Math.floor(0.25 * Math.sqrt(userPoints))
     sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)

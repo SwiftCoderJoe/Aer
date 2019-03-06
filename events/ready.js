@@ -19,10 +19,10 @@
       console.log(i);
       let guildUser = guildMembers[i];
       var key = `${guild.id}-${guildUser.user.id}`;
-      let stmt = db.prepare(`INSERT INTO users (key) SELECT (${key}) WHERE NOT EXISTS (SELECT 1 FROM users WHERE key = "${key}");`);
+      let stmt = db.prepare(`INSERT OR IGNORE INTO users (key) SELECT (${key}) WHERE NOT EXISTS (SELECT 1 FROM users WHERE key = "${key}");`);
       let changes = stmt.run()
       if (changes.changes == 1) {
-        console.log(`A new user has been inserted with key ${this.lastID}`);
+        console.log(`A new user has been inserted with key ${key}`);
         addDefaultData(guildUser.user.id, guild.id);
       }
     }
