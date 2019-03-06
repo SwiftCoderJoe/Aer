@@ -1,4 +1,11 @@
 ﻿module.exports = (client, db, msg) => {
+
+  function addDefaultData(UId, UGuild) {
+    let key = `${UGuild}-${UId}`;
+    let sql = db.prepare(`UPDATE users SET user = "${UId}", guild = ${UGuild}, points = 0, level = 0, lastPointMsg = 0, warntimes = 0 WHERE key = ${key};`);
+    sql.run();
+  }
+
   console.log(`Logged in as ${client.user.tag}!`);
 
   var guilds = Array.from(client.guilds.values());
@@ -12,26 +19,15 @@
       console.log(i);
       let guildUser = guildMembers[i];
       var key = `${guild.id}-${guildUser.user.id}`;
-      db.run(`INSERT INTO users (key) SELECT (${key}) WHERE NOT EXISTS (SELECT 1 FROM users WHERE key = "${key}");`, function(err) {
-        if (err) {
-          return console.log(err.message + `This is most likely because the user already exists in the Users db.`);
-        }
+      let stmt = db.prepare(`INSERT INTO users (key) SELECT (${key}) WHERE NOT EXISTS (SELECT 1 FROM users WHERE key = "${key}");`);
+      let changes = stmt.run()
+      if (changes.changes == 1) {
         console.log(`A new user has been inserted with key ${this.lastID}`);
         addDefaultData(guildUser.user.id, guild.id);
-      });
+      }
     }
   }
 
-  addDefaultData: function (UId, UGuild) {
-    let key = `${UGuild}-${UId}`;
-    let sql = `UPDATE users SET user = "${key}", guild = ${UGuild}, 0, 0, 0, 0 WHERE id = id_value;`
-    db.run(sql, function(err) {
-      if (err) {
-        return console.error(err.message);
-      }
-      console.log(`Default values have now been added to ${this.changes}.`)
-    });
-  }
 };
 //db.run(`INSERT INTO users(key) VALUES(${guildUser.id}, ${guild.id}, 0, 0, 0, 0) WHERE NOT EXISTS(SELECT 1 FROM users WHERE key="${key}")`, [key]
 //console.log(`user ${guildUser.id} is already in the db. Skipping...`);

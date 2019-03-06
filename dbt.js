@@ -1,4 +1,4 @@
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
 const { CommandoClient } = require(`discord.js-commando`);
 ﻿const fsd = "/Users/Kids/Documents/GitHub/dbt-beta/"
 const path = require(`path`);
@@ -38,22 +38,24 @@ client.registry
   })
   .registerCommandsIn(path.join(__dirname, `commands`));
 
-let db = new sqlite3.Database(`${fsd}db/Data.db`, (err) => {
+/*let db = new sqlite3.Database(`${fsd}db/Data.db`, (err) => {
   if (err) {
     console.error(err.message);
   }
   console.log('Connected to the data database.');
-});
+});*/
 
-var sql = `CREATE TABLE IF NOT EXISTS users (
+const db = new Database(`${fsd}db/Data.db`, { /*verbose: console.log*/ });
+
+const sql = db.prepare(`CREATE TABLE IF NOT EXISTS users (
       key TEXT PRIMARY KEY,
       user TEXT,
       guild TEXT,
       points INTEGER,
       level INTEGER,
       lastPointMsg INTEGER,
-      warntimes INTEGER)`;
-db.run(sql);
+      warntimes INTEGER);`);
+sql.run();
 
 
 fs.readdir(`${fsd}events/`, (err, files) => {
