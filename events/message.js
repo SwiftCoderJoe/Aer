@@ -25,7 +25,7 @@ module.exports = (client, db, msg) => {
   const stmt = db.prepare(`SELECT * FROM users WHERE key = ${key};`)
   userData = stmt.get();
 
-  let badWords = [`fuck`, `shit`, `ass`, `bitch`];
+  let badWords = [`fuck`, `shit`, `ass`, `bitch`,`nigger`];
 
   if (multiSearch.multiSearchFor(msg, badWords)) {
     msg.delete()
