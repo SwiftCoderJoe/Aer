@@ -30,7 +30,8 @@ client.registry
     /*[`mods`, `Moderation related commands.`],*/
     //[`owner`, `Owner-only commands.`],
     [`info`, `Informative commands.`],
-    [`userdata`, `Shows data about a particular user.`]
+    [`userdata`, `Shows data about a particular user.`],
+    [`moderation`, `An easy way to moderate a server.`]
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
