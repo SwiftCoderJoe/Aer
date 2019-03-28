@@ -27,15 +27,15 @@ module.exports = class BanCommand extends Command {
     try {
       var strongRoles = [`moderator`, `admin`] //Roles that can ban, and also cannot be banned. Only one is required for it to take effect on that user.
       let guildMembers = msg.guild.members //members of the guild
-      let banMember = msg.guild.members.get(msg.author.id) //The GuildMember that called the Ban command
-      let banMemberRoles = Array.from(banMember.roles.values()) //GuildMember Roles
-      let bannedMember = guildMembers.get(user.id) // The GuildMember being banned
-      let bannedMemberRoles = Array.from(bannedMember.roles.values()) // The GuildMember Roles
+      let callMember = msg.guild.members.get(msg.author.id) //The GuildMember that called the Ban command
+      let callMemberRoles = Array.from(callMember.roles.values()) //GuildMember Roles
+      let targetMember = guildMembers.get(user.id) // The GuildMember being banned
+      let targetMemberRoles = Array.from(targetMember.roles.values()) // The GuildMember Roles
       
       // Check to make sure the user that called the Ban command has the required strongRoles
       var canBan = false
       strongRoles.some(function (requiredRole, _index1) {
-        for (let role in banMemberRoles) {
+        for (let role in callMemberRoles) {
           if (role.name === requiredRole.name) {
             canBan = true
             return true
@@ -50,18 +50,18 @@ module.exports = class BanCommand extends Command {
       }
 
       // Check to make sure that the user being banned doesn't have any strongRoles
-      let cannotBan = false
+      let cannotBanTarget = false
       strongRoles.some(function (requiredRole, _index1) {
-        for (let role in bannedMemberRoles) {
+        for (let role in targetMemberRoles) {
           if (role.name === requiredRole.name) {
-            cannotBan = true
+            cannotBanTarget = true
             return true
           }
         }
         return false
       })
 
-      if (cannotBan) {
+      if (cannotBanTarget) {
         msg.reply(`This user cannot be banned.`)
       } else {
         // Actually ban the user
