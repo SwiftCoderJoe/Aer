@@ -25,15 +25,14 @@ module.exports = class BanCommand extends Command {
   }
   run (msg, { user, reason }) {
     try {
-      // console.log(`user: ${user}`);
-      // console.log(`reason: ${reason}`);
-      var strongRoles = [`moderator`, `admin`]
-      let guildMembers = msg.guild.members
-      let banMember = msg.guild.members.get(msg.author.id)
-      let banMemberRoles = Array.from(banMember.roles.values())
-      let bannedMember = guildMembers.get(user.id)
-      let bannedMemberRoles = Array.from(bannedMember.roles.values())
+      var strongRoles = [`moderator`, `admin`] //Roles that can ban, and also cannot be banned. Only one is required for it to take effect on that user.
+      let guildMembers = msg.guild.members //members of the guild
+      let banMember = msg.guild.members.get(msg.author.id) //The GuildMember that called the Ban command
+      let banMemberRoles = Array.from(banMember.roles.values()) //GuildMember Roles
+      let bannedMember = guildMembers.get(user.id) // The GuildMember being banned
+      let bannedMemberRoles = Array.from(bannedMember.roles.values()) // The GuildMember Roles
       
+      // Check to make sure the user that called the Ban command has the required strongRoles
       var canBan = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in banMemberRoles) {
@@ -50,6 +49,7 @@ module.exports = class BanCommand extends Command {
         return
       }
 
+      // Check to make sure that the user being banned doesn't have any strongRoles
       let cannotBan = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in bannedMemberRoles) {
@@ -64,10 +64,10 @@ module.exports = class BanCommand extends Command {
       if (cannotBan) {
         msg.reply(`This user cannot be banned.`)
       } else {
-        msg.reply(`This would normally ban someone`)
-        // const banDM = user.createDM()
-        // banDM.send(`You were banned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
-        // msg.guild.ban(user, reason)
+        // Actually ban the user
+        const banDM = user.createDM()
+        banDM.send(`You were banned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
+        msg.guild.ban(user, reason)
       } 
     } catch (e) {
       msg.reply(
