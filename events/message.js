@@ -1,14 +1,13 @@
 module.exports = (client, db, msg) => {
-
   let path = `/Users/Kids/Documents/GitHub/dbt-beta/`
 
-  const multiSearch = require(`${path}libs/multiSearch.js`);
+  const multiSearch = require(`${path}libs/multiSearch.js`)
 
-  var d = new Date();
+  var d = new Date()
 
-  if (msg.author.bot) return;
+  if (msg.author.bot) return
 
-  const key = `${msg.guild.id}-${msg.author.id}`;
+  const key = `${msg.guild.id}-${msg.author.id}`
 
   /*
   --Data Table--
@@ -23,24 +22,24 @@ module.exports = (client, db, msg) => {
   */
 
   const stmt = db.prepare(`SELECT * FROM users WHERE key = ${key};`)
-  userData = stmt.get();
+  let userData = stmt.get()
 
-  let badWords = [`fuck`, `shit`, `ass`, `bitch`,`nigger`];
+  let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
 
   if (multiSearch.multiSearchFor(msg, badWords)) {
     msg.delete()
-    .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
-    .catch(console.error);
-    msg.reply(`Why so salty? No bad language in ${msg.guild}`);
-    sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = ${key};`);
-    sql.run();
-    const channel = msg.guild.channels.find(ch => ch.name === 'logs');
+      .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
+      .catch(console.error)
+    msg.reply(`Why so salty? No bad language in ${msg.guild}`)
+    let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = ${key};`)
+    sql.run()
+    const channel = msg.guild.channels.find(ch => ch.name === 'logs')
     if (channel) {
-      channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`);
+      channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
     }
   }
 
-  let timeSent = d.getTime();
+  let timeSent = d.getTime()
 
   if (userData.lastPointMsg < (timeSent - 60000)) {
     let sql = db.prepare(`UPDATE users SET points = ${userData.points + 1} WHERE key = ${key}`)
@@ -51,16 +50,13 @@ module.exports = (client, db, msg) => {
 
   const curLevel = Math.floor(
     0.25 * Math.sqrt(userData.points)
-  );
+  )
 
-  console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`);
+  console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)
 
   if (userData.level < curLevel) {
-    msg.reply(`You've leveled up to level **${curLevel}**!`);
-    const newLevel = Math.floor(0.25 * Math.sqrt(userPoints)) //=== 0 ? 1 : Math.floor(0.25 * Math.sqrt(userPoints))
-    sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
-    sql.run();
+    msg.reply(`You've leveled up to level **${curLevel}**!`)
+    let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
+    sql.run()
   }
-
-
-};
+}

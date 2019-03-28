@@ -1,5 +1,4 @@
 module.exports = (client, db, msg) => {
-
   function addDefaultData (UId, UGuild) {
     let key = `${UGuild}-${UId}`
     let sql = db.prepare(`UPDATE users SET user = "${UId}", guild = ${UGuild}, points = 0, level = 0, lastPointMsg = 0, warntimes = 0 WHERE key = ${key};`)
@@ -13,7 +12,6 @@ module.exports = (client, db, msg) => {
   console.log(`running db check`)
 
   for (var j = 0; j < guilds.length; j++) {
-
     console.log(j)
     let guild = guilds[j]
     let guildMembers = Array.from(guild.members.values())
@@ -30,11 +28,8 @@ module.exports = (client, db, msg) => {
         console.log(`A new user has been inserted with key ${key}`)
         addDefaultData(guildUser.user.id, guild.id)
       }
-
     }
-
   }
-  
 }
 // db.run(`INSERT INTO users(key) VALUES(${guildUser.id}, ${guild.id}, 0, 0, 0, 0) WHERE NOT EXISTS(SELECT 1 FROM users WHERE key="${key}")`, [key]
 // console.log(`user ${guildUser.id} is already in the db. Skipping...`);

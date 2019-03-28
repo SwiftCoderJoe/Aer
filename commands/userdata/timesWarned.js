@@ -1,7 +1,7 @@
-const { Command } = require(`discord.js-commando`);
+const { Command } = require(`discord.js-commando`)
 
 module.exports = class warnsCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: `timeswarned`,
       aliases: [`warntimes`, `warns`],
@@ -15,25 +15,25 @@ module.exports = class warnsCommand extends Command {
           key: `user`,
           prompt: `Who's warns would you like to see?`,
           type: `user`
-        },
+        }
       ]
-    });
+    })
   }
-  run(msg, { user } ) {
+  run (msg, { user }) {
     try {
       const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
-      const Database = require(`better-sqlite3`);
-      const db = new Database(`${fsd}db/Data.db`, { /*verbose: console.log*/ });
-      const key = `${msg.guild.id}-${user.id}`;
-      const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = ${key};`);
-      const warns = stmt.get();
-      msg.say(`User ${user.username} has been warned ${warns.warntimes} times.`);
+      const Database = require(`better-sqlite3`)
+      const db = new Database(`${fsd}db/Data.db`, { /* verbose: console.log */ })
+      const key = `${msg.guild.id}-${user.id}`
+      const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = ${key};`)
+      const warns = stmt.get()
+      msg.say(`User ${user.username} has been warned ${warns.warntimes} times.`)
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${
           e
         })`
-      );
+      )
     }
   }
 }
