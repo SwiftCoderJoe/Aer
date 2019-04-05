@@ -26,7 +26,7 @@ module.exports = class BanCommand extends Command {
   run (msg, { user, reason }) {
     try {
       var strongRoles = [`moderator`, `admin`] //Roles that can ban, and also cannot be banned. Only one is required for it to take effect on that user.
-      let guildMembers = msg.guild.members //members of the guild
+      let guildMembers = msg.guild.members //members of the guild in a Collection
       let callMember = msg.guild.members.get(msg.author.id) //The GuildMember that called the Ban command
       let callMemberRoles = Array.from(callMember.roles.values()) //GuildMember Roles
       let targetMember = guildMembers.get(user.id) // The GuildMember being banned
@@ -36,7 +36,7 @@ module.exports = class BanCommand extends Command {
       var canBan = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in callMemberRoles) {
-          if (role.name === requiredRole.name) {
+          if (callMemberRoles[role] === requiredRole) {
             canBan = true
             return true
           }
@@ -53,7 +53,7 @@ module.exports = class BanCommand extends Command {
       let cannotBanTarget = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in targetMemberRoles) {
-          if (role.name === requiredRole.name) {
+          if (callMemberRoles[role] === requiredRole) {
             cannotBanTarget = true
             return true
           }

@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "graceful-fs": "^4.1.15",
+    "better-sqlite3":"^5.4.0"
+  },
+  "name": "aer",
+  "version": "1.1.0",
+  "description": "discord bot",
+  "main": "dbt.js",
+  "repository": "https://gitlab.com/SwiftCoderJoe/dbt-beta",
+  "author": "SwiftCoderJoe",
+  "license": "Copyright",
+  "private": true
+}
