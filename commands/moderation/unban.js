@@ -61,6 +61,7 @@ module.exports = class UnbanCommand extends Command {
         const banDM = user.createDM()
         banDM.send(`Congratulations! You were unbanned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
         msg.guild.unban(user, reason)
+        msg.reply(`Successfully unbanned user ${user}`)
       }
     } catch (e) {
       msg.reply(

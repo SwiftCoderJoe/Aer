@@ -68,6 +68,7 @@ module.exports = class BanCommand extends Command {
         const banDM = user.createDM()
         banDM.send(`You were banned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
         msg.guild.ban(user, reason)
+        msg.reply(`Successfully banned user ${user}`)
       } 
     } catch (e) {
       msg.reply(
