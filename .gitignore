@@ -1,3 +1,17 @@
 
+
+##### OS STUFF
 .DS_Store
-*.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+##### DATABASE STUFF
+db/
+
+##### YARN STUFF
+node_modules/
+yarn_error.log
