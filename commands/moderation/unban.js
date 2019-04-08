@@ -34,7 +34,7 @@ module.exports = class UnbanCommand extends Command {
       var canUnban = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in callMemberRoles) {
-          if (callMemberRoles[role] === requiredRole) {
+          if (role.name === requiredRole) {
             canUnban = true
             return true
           }
