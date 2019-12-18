@@ -1,4 +1,4 @@
-import { Command } from "discord.js-commando";
+const { Command } = require(`discord.js-commando`)
 
 export default class SpamCommand extends Command {
   constructor (client) {

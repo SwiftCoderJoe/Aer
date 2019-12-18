@@ -34,7 +34,7 @@ module.exports = class UnbanCommand extends Command {
       var canUnban = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role in callMemberRoles) {
-          if (callMemberRoles[role].name === requiredRole) {
+          if (role.name === requiredRole) {
             canUnban = true
             return true
           }
@@ -49,16 +49,17 @@ module.exports = class UnbanCommand extends Command {
       }
 
       // Check to make sure the user being unbanned is actually already banned
-      let userBanned = true // It makes me define it first for some reason
-      msg.guild.fetchBans().then(bans => self.userBanned = bans.has(user.id))
+      let userBanned = false // It makes me define it first for some reason
+      msg.guild.fetchBans().then(bans => userBanned = bans.has(user.id))
   
       // Perform final checks
       if (!userBanned) {
         // If the user is not banned, do not try to unban him.
         msg.reply(`This user is not already banned.`)
       } else {
-        // Actually unban the user
-        user.createDM().then(unbanDM => unbanDM.send(`Congratulations! You were unbanned from ${msg.guild} by ${msg.author} for the reason "${reason}".`))
+        // Actually ubban the user
+        const banDM = user.createDM()
+        banDM.send(`Congratulations! You were unbanned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
         msg.guild.unban(user, reason)
         msg.reply(`Successfully unbanned user ${user}`)
       }
