@@ -69,4 +69,4 @@ fs.readdir(`${fsd}events/`, (err, files) => {
   })
 })
 
-client.login('NTQyNDYxOTI3NDk1MDQxMDM0.DzuWjg.g0tHJ_lM5e0fWF9QxNHECS0yNiA')
+client.login(process.env.BOT_TOKEN);
