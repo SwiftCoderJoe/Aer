@@ -18,6 +18,7 @@ const client = new CommandoClient({
   disableEveryone: true
 })
 
+/*
 client.registry
   .registerDefaultTypes()
   .registerGroups([
@@ -27,7 +28,7 @@ client.registry
     // [`economy`, `Economy related commands.`],
     // [`animals`, `All sorts of animal related commands.`],
     [`fun`, `Very fun commands ;)`],
-    /* [`mods`, `Moderation related commands.`], */
+    // [`mods`, `Moderation related commands.`],
     // [`owner`, `Owner-only commands.`],
     [`info`, `Informative commands.`],
     [`userdata`, `Shows data about a particular user.`],
@@ -38,7 +39,7 @@ client.registry
     eval: false
   })
   .registerCommandsIn(path.join(__dirname, `commands`))
-
+*/
 /* let db = new sqlite3.Database(`${fsd}db/Data.db`, (err) => {
   if (err) {
     console.error(err.message);
