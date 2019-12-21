@@ -8,11 +8,16 @@ module.exports = (client, db, msg) => {
 
   if (msg.author.bot) return
 
-  var msgNoMention = removeFirstMention(msg)
 
-  if (msgNoMention == 'GP is gay?') {
-    var resp = isGayResponses[Math.floor(Math.random() * isGayResponses.length)];
-    
+  if (msg.mentions.users.first()) {
+    var msgNoMention = removeFirstMention(msg)
+
+    switch (msgNoMention) {
+      case 'GP is gay?': {
+        var resp = isGayResponses[Math.floor(Math.random() * isGayResponses.length)];
+        msg.reply(resp)
+      }
+    }
   }
 }
 
