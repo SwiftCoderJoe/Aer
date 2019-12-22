@@ -6,6 +6,7 @@ module.exports = (client, db, msg) => {
 
   if (msg.author.bot) return
 
+  //MENTION CHECKS/JOKES START HERE
 
   if (msg.mentions.users.first()) {
     var msgNoMention = removeFirstMention.removeFirstMention(msg.content)
@@ -22,14 +23,14 @@ module.exports = (client, db, msg) => {
     }
   } else {
 
-
+    //SPECIAL MESSAGE CHECKS START HERE
 
     if (msg.content.startsWith(`yes or no`)) {
       var resp = yesno[Math.floor(Math.random() * yesno.length)];
       msg.reply(resp)
     } else {
 
-
+      //LITERAL MESSAGE CHECKS START HERE
 
       switch (msg.content.toLowerCase()) {
         case `GP tell me a joke`: {
