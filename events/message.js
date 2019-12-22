@@ -33,4 +33,10 @@ module.exports = (client, db, msg) => {
 }
 
 var isGayResponses = [`So gay, the rainbows are jealous.`,`He is taken, don't bother.`,`Are you asking for a friend?`]
-var jokes = [`What's red and bad for your teeth? A brick.`, `I was going to tell a dead baby joke. But I decided to abort.`]
+var jokes = [`What's red and bad for your teeth? A brick.`, 
+  `I was going to tell a dead baby joke. But I decided to abort.`,
+  `Why does Dr. Pepper come in a bottle? His wife is dead.`,
+  `Why does Helen Keller hate porcupines? They're painful to look at.`,
+  `Why can't orphans play basketball? They don't know where home is.`,
+  `Give a man a match, and he'll be warm for a few hours. Set a man on fire, and he will be warm for the rest of his life.`,
+  `I asked a pretty, young homeless woman if I could take her home. She smiled at me and said yes. The look on her face soon changed, however, when I walked off with her cardboard box.`]
