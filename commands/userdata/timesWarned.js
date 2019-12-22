@@ -21,9 +21,8 @@ module.exports = class warnsCommand extends Command {
   }
   run (msg, { user }) {
     try {
-      const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
       const Database = require(`better-sqlite3`)
-      const db = new Database(`${fsd}db/Data.db`, { /* verbose: console.log */ })
+      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
       const key = `${msg.guild.id}-${user.id}`
       const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = ${key};`)
       const warns = stmt.get()

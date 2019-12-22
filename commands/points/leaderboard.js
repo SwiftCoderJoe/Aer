@@ -16,9 +16,8 @@ module.exports = class LeaderboardCommand extends Command {
   }
   run (msg) {
     try {
-      const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
       const Database = require(`better-sqlite3`)
-      const db = new Database(`${fsd}db/Data.db`, { /* verbose: console.log */ })
+      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
 
       let sql = db.prepare(`SELECT DISTINCT points points, level level, user user FROM users WHERE guild = ${msg.guild.id} ORDER BY points;`)
 

@@ -46,7 +46,7 @@ client.registry
   console.log('Connected to the data database.');
 }); */
 
-const db = new Database(`${fsd}db/Data.db`, { /* verbose: console.log */ })
+const db = new Database(`./db/Data.db`, { /* verbose: console.log */ })
 
 const sql = db.prepare(`CREATE TABLE IF NOT EXISTS users (
       key TEXT PRIMARY KEY,
