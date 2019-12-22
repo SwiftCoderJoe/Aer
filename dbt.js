@@ -1,6 +1,5 @@
 const Database = require('better-sqlite3')
 const { CommandoClient } = require(`discord.js-commando`)
-const fsd = `/Users/Kids/Documents/GitHub/Aer/`
 const path = require(`path`)
 
 // discord stuff
@@ -49,15 +48,15 @@ client.registry
 
 const db = 0
 
-fs.readdir(`${fsd}events/`, (err, files) => {
+fs.readdir(`./events/`, (err, files) => {
   if (err) return console.error(err)
   files.forEach(file => {
     if (!file.endsWith(`.js`)) return
-    const event = require(`${fsd}events/${file}`)
+    const event = require(`./events/${file}`)
     let eventName = file.split(`.`)[0]
     client.on(eventName, event.bind(null, client, db))
-    delete require.cache[require.resolve(`${fsd}events/${file}`)]
+    delete require.cache[require.resolve(`./events/${file}`)]
   })
 })
 
-client.login(`NjU3MDEyMzg5Njg2MDE4MDgy.Xf7jrw.SLkQgV77p4jfpSujK48mpU8G4gQ`);
+client.login(`process.env.BOT_TOKEN`);

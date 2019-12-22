@@ -1,8 +1,6 @@
 module.exports = (client, db, msg) => {
-  let path = `/Users/Kids/Documents/GitHub/Aer/`
-
-  const multiSearch = require(`${path}libs/multiSearch.js`)
-  const removeFirstMention = require(`${path}libs/removeFirstMention.js`)
+  const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
+  const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
 
   var d = new Date()
 
