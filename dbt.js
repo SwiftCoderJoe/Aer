@@ -1,6 +1,6 @@
 const Database = require('better-sqlite3')
 const { CommandoClient } = require(`discord.js-commando`)
-const fsd = `/Users/Kids/Documents/GitHub/dbt-beta/`
+const fsd = `/Users/Kids/Documents/GitHub/Aer/`
 const path = require(`path`)
 
 // discord stuff
