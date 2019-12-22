@@ -1,7 +1,6 @@
 module.exports = (client, db, msg) => {
-  let path = `/Users/Kids/Documents/GitHub/dbt-beta/`
-
-  const multiSearch = require(`${path}libs/multiSearch.js`)
+  const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
+  const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
 
   var d = new Date()
 
