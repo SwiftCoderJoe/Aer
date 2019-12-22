@@ -47,17 +47,7 @@ client.registry
   console.log('Connected to the data database.');
 }); */
 
-const db = new Database(`${fsd}db/Data.db`, { /* verbose: console.log */ })
-
-const sql = db.prepare(`CREATE TABLE IF NOT EXISTS users (
-      key TEXT PRIMARY KEY,
-      user TEXT,
-      guild TEXT,
-      points INTEGER,
-      level INTEGER,
-      lastPointMsg INTEGER,
-      warntimes INTEGER);`)
-sql.run()
+const db = 0
 
 fs.readdir(`${fsd}events/`, (err, files) => {
   if (err) return console.error(err)
@@ -70,4 +60,4 @@ fs.readdir(`${fsd}events/`, (err, files) => {
   })
 })
 
-client.login(process.env.BOT_TOKEN);
+client.login(`NjU3MDEyMzg5Njg2MDE4MDgy.Xf7jrw.SLkQgV77p4jfpSujK48mpU8G4gQ`);

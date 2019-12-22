@@ -20,6 +20,7 @@ module.exports = (client, db, msg) => {
     }
   } else {
     if (msg.toLowerCase() == `gp tell me a joke`) {
+      console.log(`joke`);
       var resp = jokes[Math.floor(Math.random() * jokes.length)];
       msg.reply(resp)
     }
