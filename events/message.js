@@ -1,8 +1,8 @@
 module.exports = (client, db, msg) => {
-  let path = `/Users/Kids/Documents/GitHub/dbt-beta/`
+  let path = `/Users/Kids/Documents/GitHub/Aer/`
 
-  const multiSearch = require(`./libs/multiSearch.js`)
-  const removeFirstMention = require(`./libs/multiSearch.js`)
+  const multiSearch = require(`${path}libs/multiSearch.js`)
+  const removeFirstMention = require(`${path}libs/removeFirstMention.js`)
 
   var d = new Date()
 
@@ -10,16 +10,20 @@ module.exports = (client, db, msg) => {
 
 
   if (msg.mentions.users.first()) {
-    var msgNoMention = removeFirstMention(msg)
+    var msgNoMention = removeFirstMention.removeFirstMention(msg.content)
 
     switch (msgNoMention.toLowerCase()) {
       case 'gp is gay?': {
+        console.log(`gayResp`)
         var resp = isGayResponses[Math.floor(Math.random() * isGayResponses.length)];
         msg.reply(resp)
       }
+      default: {
+        console.log(msgNoMention.toLowerCase())
+      }
     }
   } else {
-    if (msg.toLowerCase() == `gp tell me a joke`) {
+    if (msg.content.toLowerCase() == `gp tell me a joke`) {
       console.log(`joke`);
       var resp = jokes[Math.floor(Math.random() * jokes.length)];
       msg.reply(resp)
