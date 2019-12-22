@@ -33,7 +33,7 @@ module.exports = (client, db, msg) => {
       //LITERAL MESSAGE CHECKS START HERE
 
       switch (msg.content.toLowerCase()) {
-        case `GP tell me a joke`: {
+        case `gp tell me a joke`: {
           var resp = jokes[Math.floor(Math.random() * jokes.length)];
           msg.reply(resp)
         }
