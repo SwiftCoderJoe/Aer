@@ -4,7 +4,7 @@
     "discord.js": "^11.4.2",
     "discord.js-commando": "^0.10.0",
     "graceful-fs": "^4.1.15",
-    "node": "^13.5.0",
+    "node": "^12.14.0",
     "node-opus": "^0.3.1",
     "path": "^0.12.7",
     "sqlite": "^2.0.0",
@@ -22,6 +22,6 @@
   "license": "GNU GPL v3",
   "private": true,
   "engines": {
-    "node": "11.14.0"
+    "node": "12.14.0"
   }
 }
