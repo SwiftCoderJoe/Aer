@@ -20,5 +20,8 @@
   "repository": "https://github.com/SwiftCoderJoe/Aer",
   "author": "SwiftCoderJoe",
   "license": "GNU GPL v3",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "11.14.0"
+  }
 }
