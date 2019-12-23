@@ -521,6 +521,11 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
+node-bin-setup@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
+  integrity sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==
+
 node-opus@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/node-opus/-/node-opus-0.3.1.tgz#21cbf04030043faa44016e5caf8b7a8c2a5905b3"
@@ -547,6 +552,13 @@ node-pre-gyp@^0.11.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node@^13.5.0:
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-13.5.0.tgz#965763f1c92b7fd40aaaea4c3ebd0160a086aae1"
+  integrity sha512-LjtOaRZ4p06C9s01dgOmK8pW0SNtxIZIRy3FvItbsfadMbWgqwKn7OktppBmAuLsVJ/AnV29oR5m5rXejJTDNQ==
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 nopt@^4.0.1:
   version "4.0.1"
