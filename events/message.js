@@ -6,28 +6,36 @@ module.exports = (client, db, msg) => {
 
   if (msg.author.bot) return
 
-  //MENTION CHECKS/JOKES START HERE
-
   if (msg.mentions.users.first()) {
+
+    //MENTION CHECKS|JOKES START HERE
+
     var msgNoMention = removeFirstMention.removeFirstMention(msg.content)
 
     switch (msgNoMention.toLowerCase()) {
-      case 'gp is gay?': {
+
+      case `gp is gay?`: {
         console.log(`gayResp`)
         var resp = isGayResponses[Math.floor(Math.random() * isGayResponses.length)];
         msg.reply(resp)
       }
-      default: {
-        console.log(msgNoMention.toLowerCase())
+
+      case `gp is stupid`:
+      case `gp is an idiot`:
+      case `gp is a bitch`:
+      case `gp is trans`: {
+        msg.reply(`I see you've set aside this special time to humiliate yourself in public.`)
       }
+
     }
   } else {
 
     //SPECIAL MESSAGE CHECKS START HERE
 
-    if (msg.content.startsWith(`yes or no`)) {
+    if (msg.content.startsWith(`GP yes or no`)) {
       var resp = yesno[Math.floor(Math.random() * yesno.length)];
       msg.reply(resp)
+
     } else {
 
       //LITERAL MESSAGE CHECKS START HERE
@@ -37,7 +45,19 @@ module.exports = (client, db, msg) => {
           var resp = jokes[Math.floor(Math.random() * jokes.length)];
           msg.reply(resp)
         }
+        case `gp you're stupid`:
+        case `gp you suck`:
+        case `gp i hate you`:
+        case `gp you're dumb`: {
+          var resp = gpSucksResponses[Math.floor(Math.random() * gpSucksResponses.length)];
+          msg.reply(resp)
+        }
       }
+
+      //CONTAINING CHECKS
+
+      //ADD MISSPELLING CHECKS
+
     }
   }
 
@@ -51,4 +71,5 @@ var jokes = [`What's red and bad for your teeth? A brick.`,
   `Why can't orphans play basketball? They don't know where home is.`,
   `Give a man a match, and he'll be warm for a few hours. Set a man on fire, and he will be warm for the rest of his life.`,
   `I asked a pretty, young homeless woman if I could take her home. She smiled at me and said yes. The look on her face soon changed, however, when I walked off with her cardboard box.`]
-  var yesno = [`yes`,`no`]
+var yesno = [`yes`,`no`]
+var gpSucksResponses = [`No you.`, `Ok boomer.`, `I refuse to have a battle of wits with an unarmed person.`, `I have plenty of talent and vision, I just don't give a damn.`]
