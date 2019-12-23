@@ -17,8 +17,8 @@
   "scripts": {
     "start": "node dbt.js"
   },
-  "repository": "https://gitlab.com/SwiftCoderJoe/dbt-beta",
+  "repository": "https://github.com/SwiftCoderJoe/Aer",
   "author": "SwiftCoderJoe",
-  "license": "Copyright",
+  "license": "GNU GPL v3",
   "private": true
 }
