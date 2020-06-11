@@ -22,7 +22,7 @@
   "private": true,
   "engines": {
     "node": "10.18.0",
-    "yarn": "1.16.0"
+    "yarn": "1.22.4"
   }
 }
 
