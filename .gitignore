@@ -13,7 +13,8 @@ Thumbs.db
 db/
 
 ##### YARN STUFF
-.yarn/
+.yarn/cache
+.yarn/unplugged
 node_modules/
 yarn_error.log
 
