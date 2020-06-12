@@ -7,17 +7,19 @@ module.exports = (client, db, msg) => {
 
   console.log(`Logged in as ${client.user.tag}!`)
 
-  var guilds = Array.from(client.guilds.values())
+  var guilds = Array.from(client.guilds.cache.array())
   console.log(guilds.length)
   console.log(`running db check`)
 
+  console.log(`${guilds} \n GUILDS ARRAY`)
+
   for (var j = 0; j < guilds.length; j++) {
-    console.log(j)
+    console.log(`${j} PASS 1`)
     let guild = guilds[j]
-    let guildMembers = Array.from(guild.members.values())
+    let guildMembers = Array.from(guild.members.cache.array())
 
     for (var i = 0; i < guildMembers.length; i++) {
-      console.log(i)
+      console.log(`${i} PASS 2`)
       let guildUser = guildMembers[i]
       if (guildUser.user.bot) return
       var key = `${guild.id}-${guildUser.user.id}`
