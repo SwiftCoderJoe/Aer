@@ -1,5 +1,5 @@
 const { Command } = require(`discord.js-commando`)
-const { RichEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 let randomHexColor = require(`random-hex-color`)
 
 module.exports = class LeaderboardCommand extends Command {
@@ -28,19 +28,19 @@ module.exports = class LeaderboardCommand extends Command {
       const sorted = filtered.sort((a, b) => b.points - a.points); */
       sorted.reverse()
       const top10 = sorted.splice(0, 10)
-      const embed = new RichEmbed()
+      const embed = new MessageEmbed()
         .setTitle(`Leaderboard`)
         .setAuthor(this.client.user.username, this.client.user.avatarURL)
         .setDescription(`Our top 10 points leaders!`)
         .setColor(randomHexColor())
       for (const data of top10) {
         embed.addField(
-          this.client.users.get(data.user).tag,
+          this.client.users.cache.get(data.user).tag,
           `**${data.points}** points (level **${data.level}**)`,
           true
         )
       }
-      msg.say({ embed })
+      msg.say(embed)
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${
