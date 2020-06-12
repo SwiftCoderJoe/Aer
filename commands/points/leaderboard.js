@@ -17,7 +17,7 @@ module.exports = class LeaderboardCommand extends Command {
   run (msg) {
     try {
       const Database = require(`better-sqlite3`)
-      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
+      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ }) //Uncomment previous part to enable verbose mode on the DB.
 
       let sql = db.prepare(`SELECT DISTINCT points points, level level, user user FROM users WHERE guild = ${msg.guild.id} ORDER BY points;`)
 

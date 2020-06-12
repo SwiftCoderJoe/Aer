@@ -1,7 +1,6 @@
 module.exports = (client, db, msg) => {
   const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
   const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
-
   var d = new Date()
 
   if (msg.author.bot) return
@@ -32,7 +31,7 @@ module.exports = (client, db, msg) => {
     msg.reply(`Why so salty? No bad language in ${msg.guild}`)
     let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = ${key};`)
     sql.run()
-    const channel = msg.guild.channels.find(ch => ch.name === 'logs')
+    const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
     if (channel) {
       channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
     }
