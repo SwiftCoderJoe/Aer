@@ -1,6 +1,6 @@
 module.exports = (client, db, msg) => {
-  const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
-  const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
+  const multiSearch = require(`./libs/multiSearch.js`)
+  const removeFirstMention = require(`./libs/removeFirstMention.js`)
   var d = new Date()
 
   if (msg.author.bot) return
