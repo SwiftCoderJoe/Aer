@@ -1,6 +1,7 @@
 module.exports = (client, db, msg) => {
   const multiSearch = require(`./libs/multiSearch.js`)
   const removeFirstMention = require(`./libs/removeFirstMention.js`)
+  const config = require(`./config/config.json`)
   var d = new Date()
 
   if (msg.author.bot) return
@@ -56,5 +57,13 @@ module.exports = (client, db, msg) => {
     msg.reply(`You've leveled up to level **${curLevel}**!`)
     let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
     sql.run()
+
+    msg.reply(`You've been given the role "${config[curLevel.toString()]}" because you levelled up to level ${curLevel}`)
+
+    if (config.hasOwnProperty(curLevel.toString())) {
+      var role= msg.member.guild.roles.cache.find(role => role.name === config[curLevel.toString])
+      msg.member.roles.add(role)
+      
+    }
   }
 }
