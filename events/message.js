@@ -1,6 +1,7 @@
 module.exports = (client, db, msg) => {
-  const multiSearch = require(`./libs/multiSearch.js`)
-  const removeFirstMention = require(`./libs/removeFirstMention.js`)
+  const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
+  const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
+  const config = require(`${process.cwd()}/config/config.json`)
   var d = new Date()
 
   if (msg.author.bot) return
@@ -56,5 +57,13 @@ module.exports = (client, db, msg) => {
     msg.reply(`You've leveled up to level **${curLevel}**!`)
     let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
     sql.run()
+
+    
+
+    if (config.levelUpRoles.hasOwnProperty(curLevel.toString())) {
+      msg.member.roles.add(msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]))
+
+      msg.reply(`You've been given the role "${msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]).name}" because you levelled up to level ${curLevel}`)
+    }
   }
 }

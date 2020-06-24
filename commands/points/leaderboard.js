@@ -17,7 +17,7 @@ module.exports = class LeaderboardCommand extends Command {
   run (msg) {
     try {
       const Database = require(`better-sqlite3`)
-      const db = new Database(`./db/Data.db`, { /* verbose: console.log */ })
+      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
 
       let sql = db.prepare(`SELECT DISTINCT points points, level level, user user FROM users WHERE guild = ${msg.guild.id} ORDER BY points;`)
 
@@ -34,6 +34,7 @@ module.exports = class LeaderboardCommand extends Command {
         .setDescription(`Our top 10 points leaders!`)
         .setColor(randomHexColor())
       for (const data of top10) {
+        console.log(data.user)
         embed.addField(
           this.client.users.cache.get(data.user).tag,
           `**${data.points}** points (level **${data.level}**)`,
