@@ -34,6 +34,7 @@ module.exports = class LeaderboardCommand extends Command {
         .setDescription(`Our top 10 points leaders!`)
         .setColor(randomHexColor())
       for (const data of top10) {
+        console.log(data.user)
         embed.addField(
           this.client.users.cache.get(data.user).tag,
           `**${data.points}** points (level **${data.level}**)`,
