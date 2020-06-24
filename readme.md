@@ -18,8 +18,8 @@ This section only shows the 3 most recent releases. To see the full changelog, v
 
 ## Meta
 
-[Twitter](https://twitter.com/SwiftCoderJoe)  
-[GitHub](https://github.com/SwiftCoderJoe)  
+[Twitter](https://twitter.com/SwiftCoderJoe) -- @SwiftCoderJoe  
+[GitHub](https://github.com/SwiftCoderJoe) -- SwiftCoderJoe  
 Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 
 ## Contributing
