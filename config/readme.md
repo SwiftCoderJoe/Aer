@@ -15,7 +15,7 @@ The configuration file is split into multiple categories, as shown below.
     {
         "category 1" : {
             "thing 1" : "value 1",
-          "thing 2" : "value 2"
+            "thing 2" : "value 2"
         },
         "category 2" : {
             "thing 1" : "value 1",
@@ -25,6 +25,21 @@ The configuration file is split into multiple categories, as shown below.
 
 This documentation will walk you through how to configure each category.
 
+## points
+
+Each of these values correspond to things relating to the points system.
+
+### infoChannel
+
+This value will signify the channel you want points info to be sent in. This info includes level up notifications and level up role add (see: levelUpRoles) notifications.
+
+It is configured like this:
+
+    "infoChannel" : "717379525708873788"
+
+Leave this value blank if you would like to send notifications in the channel that they happen in.
+
+
 ### levelUpRoles
 
 LevelUpRoles allows the bot to add roles when users reach a certain level. 
@@ -32,8 +47,8 @@ LevelUpRoles allows the bot to add roles when users reach a certain level.
 It is configured like this:
 
     "levelUpRoles" : {
-        "1" : "725356277634695349"
+        "1" : "725356277634695349",
         "10" : "559846717676322837"
     }
 
-As you can see, on the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID".
+On the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID". You must use commas between each value.

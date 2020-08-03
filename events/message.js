@@ -60,10 +60,10 @@ module.exports = (client, db, msg) => {
 
     
 
-    if (config.levelUpRoles.hasOwnProperty(curLevel.toString())) {
-      msg.member.roles.add(msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]))
+    if (config.points.DatelevelUpRoles.hasOwnProperty(curLevel.toString())) {
+      msg.member.roles.add(msg.member.guild.roles.cache.get(config.points.levelUpRoles[curLevel.toString()]))
 
-      msg.reply(`You've been given the role "${msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]).name}" because you levelled up to level ${curLevel}`)
+      msg.reply(`You've been given the role "${msg.member.guild.roles.cache.get(config.points.levelUpRoles[curLevel.toString()]).name}" because you levelled up to level ${curLevel}`)
     }
   }
 }
