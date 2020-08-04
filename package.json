@@ -1,16 +1,17 @@
 {
   "dependencies": {
     "better-sqlite3": "^5.4.0",
-    "discord.js": "^11.4.2",
-    "discord.js-commando": "^0.10.0",
+    "discord.js": "^12.2.0",
+    "discord.js-commando": "https://github.com/discordjs/Commando.git#bdbd84e2a978322f3af12c21e729eb7b7cd4a3dc",
     "graceful-fs": "^4.1.15",
     "node-opus": "^0.2.7",
     "path": "^0.12.7",
+    "random-hex-color": "^1.0.1",
     "sqlite": "^2.0.0",
-    "uws": "^9.14.0"
+    "uws": "^100.0.1"
   },
   "name": "aer",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "discord bot",
   "main": "dbt.js",
   "scripts": {
@@ -21,8 +22,7 @@
   "license": "GNU GPL v3",
   "private": true,
   "engines": {
-    "node": "10.18.0",
+    "node": "13.14.0",
     "yarn": "1.22.4"
   }
 }
-

@@ -27,13 +27,13 @@ module.exports = class UnbanCommand extends Command {
     try {
       var strongRoles = [`moderator`, `admin`] //members that can unban users
       let guildMembers = msg.guild.members //the members of the guild in a Collection
-      let callMember = guildMembers.get(msg.author.id) //The guildMember who called the Unban command
-      let callMemberRoles = Array.from(callMember.roles.values()) //The roles of the guildMember who called the Unban command
+      let callMember = guildMembers.cache.get(msg.author.id) //The guildMember who called the Unban command
+      let callMemberRoles = Array.from(callMember.roles.cache.array()) //The roles of the guildMember who called the Unban command
       
       // Check to make sure the user calling the command has the needed permissions
       var canUnban = false
       strongRoles.some(function (requiredRole, _index1) {
-        for (let role in callMemberRoles) {
+        for (let role of callMemberRoles) {
           if (role.name === requiredRole) {
             canUnban = true
             return true
@@ -49,20 +49,26 @@ module.exports = class UnbanCommand extends Command {
       }
 
       // Check to make sure the user being unbanned is actually already banned
-      let userBanned = false // It makes me define it first for some reason
-      msg.guild.fetchBans().then(bans => userBanned = bans.has(user.id))
-  
-      // Perform final checks
-      if (!userBanned) {
-        // If the user is not banned, do not try to unban him.
-        msg.reply(`This user is not already banned.`)
-      } else {
-        // Actually ubban the user
-        const banDM = user.createDM()
-        banDM.send(`Congratulations! You were unbanned from ${msg.guild} by ${msg.author} for the reason "${reason}".`)
-        msg.guild.unban(user, reason)
-        msg.reply(`Successfully unbanned user ${user}`)
-      }
+      var userBanned
+      let bannedUsers = [] // It makes me define it first for some reason
+      msg.guild.fetchBans().then(bans => {
+        userBanned = bans.has(user.id)
+        
+        // Perform final checks
+        if (!userBanned) {
+          // If the user is not banned, do not try to unban him.
+          msg.reply(`This user is not already banned.`)
+        } else {
+          // Actually unban the user 
+          user.createDM().then(banDM => banDM.send(`Congratulations! You were unbanned from ${msg.guild} by ${msg.author} for the reason "${reason}".`))
+          msg.guild.members.unban(user, reason)
+          msg.reply(`Successfully unbanned user ${user}`)
+          console.log(`^ If there is an error here, that is okay, because the bot cannot DM the user. We keep this command just in case someone has another server with the bot.`)
+        }
+      })
+
+      //We are done!
+      
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${e})`
