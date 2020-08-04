@@ -38,11 +38,11 @@ module.exports = class RankCommand extends Command {
       var rankUser
       var userRank = 0
       if (user === ``) {
-        user = msg.author.id
+        user = msg.author
       }
       for (rankUser of sorted) {
         userRank++
-        if (rankUser.user === user) {
+        if (rankUser.user === user.id) {
           break
         }
       } 
