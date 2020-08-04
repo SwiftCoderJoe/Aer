@@ -2,6 +2,7 @@ module.exports = (client, db, msg) => {
   const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
   const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
   const config = require(`${process.cwd()}/config/config.json`)
+  const guild = msg.guild.id
   var d = new Date()
 
   if (msg.author.bot) return
@@ -54,16 +55,27 @@ module.exports = (client, db, msg) => {
   console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)
 
   if (userData.level < curLevel) {
-    msg.reply(`You've leveled up to level **${curLevel}**!`)
+
+    if (config[guild].points.infoChannel === "") {
+      msg.reply(`you've leveled up to level **${curLevel}**!`)
+    } else {
+      client.guilds.cache.get(guild).channels.cache.get(config[guild].points.infoChannel).send(`${msg.author}, you've leveled up to level **${curLevel}**!`)
+    }
+
     let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
     sql.run()
 
     
 
-    if (config.levelUpRoles.hasOwnProperty(curLevel.toString())) {
-      msg.member.roles.add(msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]))
+    if (config[guild].points.levelUpRoles.hasOwnProperty(curLevel.toString())) {
+      msg.member.roles.add(msg.member.guild.roles.cache.get(config[guild].points.levelUpRoles[curLevel.toString()]))
 
-      msg.reply(`You've been given the role "${msg.member.guild.roles.cache.get(config.levelUpRoles[curLevel.toString()]).name}" because you levelled up to level ${curLevel}`)
+      if (config[guild].points.infoChannel === "") {
+        msg.reply(`you've been given the role **${msg.member.guild.roles.cache.get(config[guild].points.levelUpRoles[curLevel.toString()]).name}** because you leveled up to level **${curLevel}**!`)
+      } else {
+        client.guilds.cache.get(guild).channels.cache.get(config[guild].points.infoChannel).send(`${msg.author}, you've been given the role **${msg.member.guild.roles.cache.get(config[guild].points.levelUpRoles[curLevel.toString()]).name}** because you leveled up to level **${curLevel}**!`)
+      }
+      
     }
   }
 }

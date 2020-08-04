@@ -6,6 +6,7 @@
     "graceful-fs": "^4.1.15",
     "node-opus": "^0.3.1",
     "path": "^0.12.7",
+    "random-hex-color": "^1.0.1",
     "sqlite": "^2.0.0",
     "uws": "^100.0.1"
   },

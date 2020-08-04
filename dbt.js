@@ -14,7 +14,7 @@ var fs = require(`fs`)
 const client = new CommandoClient({
   commandPrefix: `dbt`,
   unknownCommandResponse: true,
-  owner: `@289158192955392001`,
+  owner: `289158192955392001`,
   disableEveryone: true
 })
 

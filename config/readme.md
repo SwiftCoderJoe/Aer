@@ -7,6 +7,7 @@
 ## How do I use it?
 
 *NOTE: this document assumes you have developer mode turned on in Discord. If this is not enabled, follow [this guide](https://www.discordia.me/en/developer-mode).*
+*NOTE: if you want to use this file, you should probably know how to use JSON.*
 
 Later, we would love to add a way to configure the bot directly from Discord. Until then, you must configure this file manually. Luckily, it is very easy.
 
@@ -15,7 +16,7 @@ The configuration file is split into multiple categories, as shown below.
     {
         "category 1" : {
             "thing 1" : "value 1",
-          "thing 2" : "value 2"
+            "thing 2" : "value 2"
         },
         "category 2" : {
             "thing 1" : "value 1",
@@ -23,7 +24,33 @@ The configuration file is split into multiple categories, as shown below.
         }
     }
 
-This documentation will walk you through how to configure each category.
+The lowest level category is the guild (server). You can configure this bot to behave differently in different guilds. Replace the default guild ID, so that your file looks like this:
+
+    {
+        "yourGuildIDHere" : {
+            "data" : "blah, blah, blah..."
+        },
+        "secondGuildIDIfYouHaveOne" : {
+            "data" : "blah, blah, blah..."
+        }
+    }
+
+If your bot is in multiple servers, you can add another Guild ID to the config file as shown above. Once you have inputted each Guild ID you want, you will be able to configure each category within each Guild/Server. This documentation will walk you through how to configure each category.
+
+## points
+
+Each of these values correspond to things relating to the points system.
+
+### infoChannel
+
+This value will signify the channel you want points info to be sent in. This info includes level up notifications and level up role add (see: levelUpRoles) notifications.
+
+It is configured like this:
+
+    "infoChannel" : "717379525708873788"
+
+Leave this value blank if you would like to send notifications in the channel that they happen in. On the left of the value is the key value. Do not change this from "infoChannel". On the right of this value, input the ID of the channel of which you would like points info messages to be sent to. You can get this ID by right-clicking a channel in a server.
+
 
 ### levelUpRoles
 
@@ -32,8 +59,8 @@ LevelUpRoles allows the bot to add roles when users reach a certain level.
 It is configured like this:
 
     "levelUpRoles" : {
-        "1" : "725356277634695349"
+        "1" : "725356277634695349",
         "10" : "559846717676322837"
     }
 
-As you can see, on the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID".
+On the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID". You must use commas between each value.
