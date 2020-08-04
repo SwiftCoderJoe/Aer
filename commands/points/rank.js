@@ -11,10 +11,18 @@ module.exports = class RankCommand extends Command {
       memberName: `rank`,
       description: `Shows your rank in this server.`,
       guildOnly: true,
-      examples: [`leaderboard`]
+      examples: [`rank @SwiftCoderJoe#8510`],
+      args: [
+        {
+          key: `user`,
+          prompt: `Who's rank would you like to see?`,
+          type: `user`,
+          default: ``
+        }
+      ]
     })
   }
-  run (msg) {
+  run (msg, { user }) {
     try {
       const Database = require(`better-sqlite3`)
       const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
@@ -26,22 +34,24 @@ module.exports = class RankCommand extends Command {
         .filter(p => p.guild === msg.guild.id)
         .array();
       const sorted = filtered.sort((a, b) => b.points - a.points); */
-      console.log(sorted)
       sorted.reverse()
-      const top10 = sorted.splice(0, 10)
-      const embed = new MessageEmbed()
-        .setTitle(`Leaderboard`)
-        .setAuthor(this.client.user.username, this.client.user.avatarURL)
-        .setDescription(`Our top 10 points leaders!`)
-        .setColor(randomHexColor())
-      for (const data of top10) {
-        console.log(data.user)
-        embed.addField(
-          this.client.users.cache.get(data.user).tag,
-          `**${data.points}** points (level **${data.level}**)`,
-          true
-        )
+      var rankUser
+      var userRank = 0
+      if (user === ``) {
+        user = msg.author.id
       }
+      for (rankUser of sorted) {
+        userRank++
+        if (rankUser.user === user) {
+          break
+        }
+      } 
+      console.log(user)
+      const embed = new MessageEmbed()
+        .setTitle(`**Rank ${userRank}**`)
+        .setAuthor(`${user.username}#${user.discriminator}`, this.client.user.avatarURL)
+        .setDescription(`**${rankUser.points}** points (level **${rankUser.level}**)`)
+        .setColor(randomHexColor())
       msg.say(embed)
     } catch (e) {
       msg.reply(

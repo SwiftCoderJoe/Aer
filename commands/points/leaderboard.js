@@ -38,7 +38,7 @@ module.exports = class LeaderboardCommand extends Command {
         embed.addField(
           this.client.users.cache.get(data.user).tag,
           `**${data.points}** points (level **${data.level}**)`,
-          true
+          false
         )
       }
       msg.say(embed)
