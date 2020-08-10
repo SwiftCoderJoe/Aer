@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.6.0]
+
+### Info:
+    - "The deployment update"
+    - This update aims to make it easier to deploy Aer in real situations, specifically through pm2.
+
+### Fixed:
+    - "help" command crash
+
 ## [1.5.2]
 
 ### Info: 
