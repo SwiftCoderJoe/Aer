@@ -19,6 +19,8 @@ Most recent changes are located at the top.
     - Generally made code easier to understand
     - Made logs easier to understand
     - Rank command broke when you tried to view your own rank
+    - Changed database key values so there is no possibility of key conflict
+
 ## [1.5.0]
 
 ### Info:
