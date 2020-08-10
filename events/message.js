@@ -1,11 +1,13 @@
 module.exports = (client, db, msg) => {
+
+  if (msg.author.bot) return
+  if (!msg.guild) return
+
   const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
   const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
   const config = require(`${process.cwd()}/config/config.json`)
   const guild = msg.guild.id
   var d = new Date()
-
-  if (msg.author.bot) return
 
   const key = `g${msg.guild.id}u${msg.author.id}`
 
