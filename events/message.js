@@ -26,7 +26,7 @@ module.exports = (client, db, msg) => {
 
   let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
 
-  if (!config.moderation.allowSwearWords) {
+  if (!config[guild].moderation.allowSwearWords) {
     if (multiSearch.multiSearchFor(msg, badWords)) {
       msg.delete()
         .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
