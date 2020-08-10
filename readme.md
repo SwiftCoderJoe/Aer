@@ -35,9 +35,3 @@ Distributed under the GNU GPLv3 license. See ``LICENSE`` for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
-
-## Todo
-
-1. Fix an issue where if someone gets banned, their entries still exist in db, and therefore there is a crash when doing the leaderboard command. FIX: remove that user's db entry on ban. Possibly save their db values in case of unban?
-2. The above issue also applies if a user (member) leaves the guild in any other way (manual ban, leaves server, etc.) FIX: possibly use guildmemberremove event which may or may not be called EVERY member that leaves, even if it is banned
-2. The keys for the db are being taken literally: userid MINUS guildid. POSSIBLE FIX: replace the - with a . ? This will fix it, however I'm not sre how large of numbers the DB can store. You may need to change the type in the database from a number and instead save it as a string.
