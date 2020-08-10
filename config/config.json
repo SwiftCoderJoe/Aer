@@ -1,14 +1,23 @@
 {
     "_comment" : "If you don't know how to use this file, read the documentation file located in /config/readme.md . All the info you may need will be there.",
-    "542462471345274890" : {
+    "552946417367384085" : {
         "points" : {
-            "infoChannel" : "740002879150096394",
+            "infoChannel" : "742409207252516905",
             "levelUpRoles" : {
-                "1" : "725356277634695349"
             }
         },
         "moderation" : {
-            "allowSwearWords" : false
+            "allowSwearWords" : true
+        }
+    },
+    "716011492071440505" : {
+        "points" : {
+            "infoChannel" : "737530816590250015",
+            "levelUpRoles" : {
+            }
+        },
+        "moderation" : {
+            "allowSwearWords" : true
         }
     }
 }
