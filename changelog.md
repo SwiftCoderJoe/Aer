@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.5.1]
+
+### Info:
+    - I guess I didn't check the last update much when I posted it
+    - I am dumb
+    - I forgot the readme
+
+### Added:
+    - Readme and changelog documentation for 1.5.0 and 1.5.1 updates
+
+### Fixed:
+    - Database error when someone leaves a guild
+    - Generally made code easier to understand
+    - Made logs easier to understand
+    - Rank command broke when you tried to view your own rank
+    - Changed database key values so there is no possibility of key conflict
+
+## [1.5.0]
+
+### Info:
+    - "The levels update"
+    - Updates some engines the code runs on, adds some levels commands and functionality.
+
+### Changed
+    - Node.js to v12
+    - Node to 13.14.0
+
+### Added:
+    - "rank" command, allows you to view your rank in terms of points in the guild
+    - "levelroles", allow you to set the bot to give roles when a user reaches a specific level
+    - Points "infochannel", which allows you to specify where the bot will send level up messages and other messages based on points
+
+### Fixed:
+    - Meaningless error on startup
+
 ## [1.4.0]
 
 ### Info:

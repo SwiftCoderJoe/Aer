@@ -7,7 +7,7 @@ module.exports = (client, db, msg) => {
 
   if (msg.author.bot) return
 
-  const key = `${msg.guild.id}-${msg.author.id}`
+  const key = `g${msg.guild.id}u${msg.author.id}`
 
   /*
   --Data Table--
@@ -21,7 +21,7 @@ module.exports = (client, db, msg) => {
   });
   */
 
-  const stmt = db.prepare(`SELECT * FROM users WHERE key = ${key};`)
+  const stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
   let userData = stmt.get()
 
   let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
@@ -31,7 +31,7 @@ module.exports = (client, db, msg) => {
       .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
       .catch(console.error)
     msg.reply(`Why so salty? No bad language in ${msg.guild}`)
-    let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = ${key};`)
+    let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = "${key}";`)
     sql.run()
     const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
     if (channel) {
@@ -42,9 +42,9 @@ module.exports = (client, db, msg) => {
   let timeSent = d.getTime()
 
   if (userData.lastPointMsg < (timeSent - 60000)) {
-    let sql = db.prepare(`UPDATE users SET points = ${userData.points + 1} WHERE key = ${key}`)
+    let sql = db.prepare(`UPDATE users SET points = ${userData.points + 1} WHERE key = "${key}"`)
     sql.run()
-    sql = db.prepare(`UPDATE users SET lastPointMsg = ${timeSent} WHERE key = ${key}`)
+    sql = db.prepare(`UPDATE users SET lastPointMsg = ${timeSent} WHERE key = "${key}"`)
     sql.run()
   }
 
@@ -62,7 +62,7 @@ module.exports = (client, db, msg) => {
       client.guilds.cache.get(guild).channels.cache.get(config[guild].points.infoChannel).send(`${msg.author}, you've leveled up to level **${curLevel}**!`)
     }
 
-    let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = ${key};`)
+    let sql = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = "${key}";`)
     sql.run()
 
     

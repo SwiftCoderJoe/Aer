@@ -9,12 +9,14 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.5.0
+    * Add "Rank" command
+    * Updated Node.js to v12
+    * Level rewards!
 * 1.4.0
     * Add ``readme.md``.
 * 1.3.0
     * Add levelUpRoles and a configuration file to go with it.
-* 1.2.0
-    * Fix ban and unban commands, and make many under-tho-hood changes that will help this bot run faster.
 
 ## Meta
 
