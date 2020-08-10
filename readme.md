@@ -9,14 +9,18 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.5.2
+    * **Added** allowBadWords automoderator functionality
+    * **Added** ``todo.md`` to help track future updates
+    * **Fixed** a broken dependancy
+* 1.5.1
+    * **Fixed** documentation for features added in 1.5
+    * **Fixed** database key values bug
+    * **Fixed** many other bugs
 * 1.5.0
-    * Add "Rank" command
-    * Updated Node.js to v12
-    * Level rewards!
-* 1.4.0
-    * Add ``readme.md``.
-* 1.3.0
-    * Add levelUpRoles and a configuration file to go with it.
+    * **Added** "Rank" command
+    * **Updated** Node.js to v12
+    * **Added** level rewards
 
 ## Meta
 
