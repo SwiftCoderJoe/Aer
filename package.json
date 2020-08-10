@@ -11,7 +11,7 @@
     "uws": "^100.0.1"
   },
   "name": "aer",
-  "version": "1.6.1build1",
+  "version": "1.6.0",
   "description": "discord bot",
   "main": "dbt.js",
   "scripts": {

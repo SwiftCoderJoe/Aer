@@ -10,6 +10,9 @@ Most recent changes are located at the top.
     - "The deployment update"
     - This update aims to make it easier to deploy Aer in real situations, specifically through pm2.
 
+### Added:
+    - PM2 ecosystem file
+
 ### Fixed:
     - "help" command crash
 

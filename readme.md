@@ -9,6 +9,9 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.6.0
+    * **Added** ecosystem file for pm2
+    * **Fixed** dbt help command
 * 1.5.2
     * **Added** allowBadWords automoderator functionality
     * **Added** ``todo.md`` to help track future updates
@@ -17,10 +20,6 @@ This section only shows the 3 most recent releases. To see the full changelog, v
     * **Fixed** documentation for features added in 1.5
     * **Fixed** database key values bug
     * **Fixed** many other bugs
-* 1.5.0
-    * **Added** "Rank" command
-    * **Updated** Node.js to v12
-    * **Added** level rewards
 
 ## Meta
 
