@@ -26,16 +26,18 @@ module.exports = (client, db, msg) => {
 
   let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
 
-  if (multiSearch.multiSearchFor(msg, badWords)) {
-    msg.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
-      .catch(console.error)
-    msg.reply(`Why so salty? No bad language in ${msg.guild}`)
-    let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = "${key}";`)
-    sql.run()
-    const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
-    if (channel) {
-      channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
+  if (!config.moderation.allowSwearWords) {
+    if (multiSearch.multiSearchFor(msg, badWords)) {
+      msg.delete()
+        .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
+        .catch(console.error)
+      msg.reply(`Why so salty? No bad language in ${msg.guild}`)
+      let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = "${key}";`)
+      sql.run()
+      const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
+      if (channel) {
+        channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
+      }
     }
   }
 

@@ -6,6 +6,9 @@
             "levelUpRoles" : {
                 "1" : "725356277634695349"
             }
+        },
+        "moderation" : {
+            "allowSwearWords" : false
         }
     }
 }

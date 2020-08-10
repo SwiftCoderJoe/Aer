@@ -64,3 +64,15 @@ It is configured like this:
     }
 
 On the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID". You must use commas between each value.
+
+## Moderation
+
+This category contains values relating to Aer's automatic moderation system.
+
+### allowSwearWords
+
+AllowSwearWords is a boolean value. If set to true, the bot will not remove messages containing swear words. If set to false, the bot will remove all messages sent with swears. You do not need quotes around the values true or false. For example:
+
+    "moderation" : {
+        allowSwearWords : false
+    }

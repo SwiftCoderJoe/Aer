@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.5.2]
+
+### Info: 
+    - Yet another maintenance update for 1.5
+    - Not really a maintenance update, adds a feature
+
+### Added:
+    - allowBadWords functionality in the config file
+    - todo.md to track what I need to do in the future
+
+### Fized:
+    - Broken dependency
+
 ## [1.5.1]
 
 ### Info:
