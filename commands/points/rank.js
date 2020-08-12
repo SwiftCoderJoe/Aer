@@ -46,7 +46,6 @@ module.exports = class RankCommand extends Command {
           break
         }
       } 
-      console.log(user)
       const embed = new MessageEmbed()
         .setTitle(`**Rank ${userRank}**`)
         .setAuthor(`${user.username}#${user.discriminator}`, this.client.user.avatarURL)
