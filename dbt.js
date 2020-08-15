@@ -13,7 +13,7 @@ var fs = require(`fs`)
 
 // commando stuff
 const client = new CommandoClient({
-  commandPrefix: `dbt`,
+  commandPrefix: `aer`,
   unknownCommandResponse: true,
   owner: `289158192955392001`,
   disableEveryone: true
