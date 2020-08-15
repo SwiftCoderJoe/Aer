@@ -6,6 +6,17 @@ Most recent changes are located at the top.
 
 ## [1.7.0]
 
+### Info:
+    - "The update update"
+
+### Added:
+    - Update command
+    - Restart command
+    - modRoles config functionality
+
+### Fixed:
+    - Needlessly difficult levels
+    
 ## [1.6.0]
 
 ### Info:
