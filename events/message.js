@@ -33,7 +33,7 @@ module.exports = (client, db, msg) => {
       msg.delete()
         .then(msg => console.log(`Deleted message from ${msg.author.username}, due to LANGUAGE`))
         .catch(console.error)
-      msg.reply(`Why so salty? No bad language in ${msg.guild}`)
+      msg.reply(`Why so salty? No bad language in ${msg.guild}.`)
       let sql = db.prepare(`UPDATE users SET warnTimes = ${userData.warntimes + 1} WHERE key = "${key}";`)
       sql.run()
       const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
@@ -53,7 +53,7 @@ module.exports = (client, db, msg) => {
   }
 
   const curLevel = Math.floor(
-    0.25 * Math.sqrt(userData.points)
+    Math.sqrt(userData.points)
   )
 
   console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)

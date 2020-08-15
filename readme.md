@@ -9,6 +9,10 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.7.0
+   * **Added** update command
+   * **Added** restart command
+   * **Added** modRoles config functionality
 * 1.6.0
     * **Added** ecosystem file for pm2
     * **Fixed** dbt help command
@@ -16,10 +20,6 @@ This section only shows the 3 most recent releases. To see the full changelog, v
     * **Added** allowBadWords automoderator functionality
     * **Added** ``todo.md`` to help track future updates
     * **Fixed** a broken dependancy
-* 1.5.1
-    * **Fixed** documentation for features added in 1.5
-    * **Fixed** database key values bug
-    * **Fixed** many other bugs
 
 ## Meta
 
