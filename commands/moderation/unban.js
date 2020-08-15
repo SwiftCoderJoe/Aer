@@ -25,15 +25,16 @@ module.exports = class UnbanCommand extends Command {
   }
   run (msg, { user, reason }) {
     try {
-      var strongRoles = [`moderator`, `admin`] //members that can unban users
+      const config = require(`${process.cwd()}/config/config.json`)
+      var strongRoles = config[msg.guild.id].modRoles //members that can unban users
       let guildMembers = msg.guild.members //the members of the guild in a Collection
       let callMember = guildMembers.cache.get(msg.author.id) //The guildMember who called the Unban command
       let callMemberRoles = Array.from(callMember.roles.cache.array()) //The roles of the guildMember who called the Unban command
       
       // Check to make sure the user calling the command has the needed permissions
       var canUnban = false
-      strongRoles.some(function (requiredRole, _index1) {
-        for (let role of callMemberRoles) {
+      callMemberRoles.some(function (requiredRole, _index1) {
+        for (let role of strongRoles) {
           if (role.name === requiredRole) {
             canUnban = true
             return true

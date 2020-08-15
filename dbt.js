@@ -1,5 +1,6 @@
 const Database = require('better-sqlite3')
 const { CommandoClient } = require(`discord.js-commando`)
+const token = require(`${process.cwd()}/config/token.json`)
 
 const path = require(`path`)
 
@@ -69,5 +70,5 @@ fs.readdir(`./events/`, (err, files) => {
   })
 })
 
-client.login(process.env.BOT_TOKEN);
+client.login(token.token);
 

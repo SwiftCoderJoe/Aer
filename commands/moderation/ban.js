@@ -31,7 +31,8 @@ module.exports = class BanCommand extends Command {
   }
   run (msg, { user, reason, daysToDelete }) {
     try {
-      var strongRoles = [`moderator`, `admin`] //Roles that can ban, and also cannot be banned. Only one is required for it to take effect on that user.
+      const config = require(`${process.cwd()}/config/config.json`)
+      var strongRoles = config[msg.guild.id].modRoles //Roles that can ban, and also cannot be banned. Only one is required for it to take effect on that user.
       let guildMembers = msg.guild.members //members of the guild in a Collection
       let callMember = msg.guild.members.cache.get(msg.author.id) //The GuildMember that called the Ban command
       let callMemberRoles = Array.from(callMember.roles.cache.array()) //GuildMember Roles
