@@ -1,7 +1,6 @@
 ### Not Scheduled
 
 * config file:
-	* Add strongroles
 	* customize welcome channel and message
 * Leveling:
 	* Config toggle for only one level reward at once
@@ -10,7 +9,7 @@
 	* Add Installation
 * Automod:
 	* more audit log events
-	* repeated text (store last 2 messages in db)
+	* repeated text (store last few messages in db)
 	* excessive caps (>70%)
 	* add clearWarns command
 	* ignore bots toggle
@@ -25,6 +24,5 @@
 * Misc:
 	* Add guildmemberremoved message
 		* This will also trigger for people who are banned, good? bad?
-	* Add !update, !restart commands
 	* Figure out a way to push updates to specific channel? possibly not through bot, possibly through Aer discord server
 		* Finish Aer discord server?

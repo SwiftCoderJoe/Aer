@@ -8,6 +8,10 @@
             }
         },
         "moderation" : {
+            "modRoles" : [
+                "744282450628444223",
+                "559846717676322837"
+            ],
             "allowSwearWords" : false
         }
     }
