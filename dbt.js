@@ -27,12 +27,13 @@ client.registry
     // [`pc`, `General stuff about computers.`],
     // [`economy`, `Economy related commands.`],
     // [`animals`, `All sorts of animal related commands.`],
-    [`fun`, `Very fun commands ;)`],
+    //[`fun`, `Very fun commands ;)`],
     /* [`mods`, `Moderation related commands.`], */
     // [`owner`, `Owner-only commands.`],
-    [`info`, `Informative commands.`],
-    [`userdata`, `Shows data about a particular user.`],
-    [`moderation`, `An easy way to moderate a server.`]
+    //[`info`, `Informative commands.`],
+    //[`userdata`, `Shows data about a particular user.`],
+    [`moderation`, `Moderation related commands.`],
+    [`bot`, `Commands that allow you to manipulate the bot without the command line.`]
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
