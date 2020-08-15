@@ -7,6 +7,10 @@
             }
         },
         "moderation" : {
+            "modRoles" : [
+                "552946937825853441",
+                "553671305585623080"
+            ],
             "allowSwearWords" : true
         }
     },
@@ -17,6 +21,10 @@
             }
         },
         "moderation" : {
+            "modRoles" : [
+                "716016957421518940",
+                "721592018257838141"
+            ],
             "allowSwearWords" : true
         }
     }
