@@ -13,7 +13,7 @@ module.exports = class BanCommand extends Command {
       args: [
         {
           key: `confirm`,
-          prompt: `Updaing the bot will make the bot unavailable for a short time. Are you sure you want to do this? Reply with yes if you are sure.`,
+          prompt: `NOTE: Updaing the bot will make the bot unavailable for a short time. NOTE: This command will update and restart the bot regardless of if there is an update available. Are you sure you want to do this? Reply with yes if you are sure.`,
           type: `string`
         },
       ]
@@ -52,20 +52,17 @@ module.exports = class BanCommand extends Command {
 
       exec(`sh ${process.cwd()}/scripts/update.sh`, (error, stdout, stderr) => {
         if (error) {
-          msg.reply(`An error has occured. Try waiting for a moment before retrying. Error: (${error.message})`)
+          msg.reply(`A JS error has occured. Try waiting for a moment before retrying. Error: (${error.message})`)
           console.log(`error: ${error.message}`);
           return;
         }
         if (stderr) {
-          msg.reply(`An error has occured. Try waiting for a moment before retrying. Error: (${stderr})`)
+          msg.reply(`An STDERR error has occured. Try waiting for a moment before retrying. Error: (${stderr})`)
           console.log(`stderr: ${stderr}`);
           return;
         }
         console.log(`stdout: ${stdout}`);
-        if (stdout === "Already up to date.\n") {
-            msg.reply(`The bot is already up to date with the newest commit on this git branch.`)
-        } else {
-            msg.reply(`Git pull returned a value that was not "Already up to date.". Restarting...`)
+        msg.reply(`Restarting...`)
 
             exec(`sh ${process.cwd()}/scripts/restart.sh`, (error, stdout, stderr) => {
                 if (error) {
@@ -80,8 +77,6 @@ module.exports = class BanCommand extends Command {
                 }
                 console.log(`stdout: ${stdout}`);
               });
-              
-        }
       });
         
     } catch (e) {

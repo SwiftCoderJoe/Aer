@@ -53,7 +53,7 @@ module.exports = (client, db, msg) => {
   }
 
   const curLevel = Math.floor(
-    0.25 * Math.sqrt(userData.points)
+    Math.sqrt(userData.points)
   )
 
   console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)

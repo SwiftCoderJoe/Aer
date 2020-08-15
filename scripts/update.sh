@@ -1,1 +1,1 @@
-git pull --ff-only
+git pull --ff-only -q
