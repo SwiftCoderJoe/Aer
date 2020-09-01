@@ -3,6 +3,34 @@ module.exports = (client, db, msg) => {
   if (msg.author.bot) return
   if (!msg.guild) return
 
+
+  // This is done to make the recursive setTimeout easier to understand
+  messageFunction(0)
+
+}
+
+function messageFunction(tryNum) {
+
+  // Get required DB info, if it isn't ready yet, retry in  
+
+  const stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
+  let userData = stmt.get()
+
+  if (userData === undefined) {
+
+    // If the third try fails, log the error and move on.
+    if (tryNum === 3) {
+      console.log(`ERROR: after trying 3 times, DB info was not yet ready. RECOMMENDATION: Restart bot or audit DB.`)
+      return
+    }
+
+    // If this isn't the third try, try again in 200ms and log it.
+    console.log(`SAFE_ERROR: DB info was not yet ready for the message event. This is due to a race condition, it is safe to ignore this error.`)
+    tryNum++
+    setTimeout(messageFunction(), 200, tryNum)
+    return
+  }
+
   const multiSearch = require(`${process.cwd()}/libs/multiSearch.js`)
   const removeFirstMention = require(`${process.cwd()}/libs/removeFirstMention.js`)
   const config = require(`${process.cwd()}/config/config.json`)
@@ -23,8 +51,6 @@ module.exports = (client, db, msg) => {
   });
   */
 
-  const stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
-  let userData = stmt.get()
 
   let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
 
