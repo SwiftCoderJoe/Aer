@@ -33,10 +33,11 @@ module.exports = class LeaderboardCommand extends Command {
         .setAuthor(this.client.user.username, this.client.user.avatarURL)
         .setDescription(`Our top 10 points leaders!`)
         .setColor(randomHexColor())
+      var i = 0;
       for (const data of top10) {
-        console.log(data.user)
+        i++
         embed.addField(
-          this.client.users.cache.get(data.user).tag,
+          `#${i}: ${this.client.users.cache.get(data.user).tag}`,
           `**${data.points}** points (level **${data.level}**)`,
           false
         )
