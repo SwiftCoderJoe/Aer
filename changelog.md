@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.8.0]
+
+### Info: 
+    - "The 'you can warn people now' update"
+
+### Added:
+    - Warn command
+    - Numbering on the leaderboard command
+
+### Fixed:
+    - MAJOR FIX bot crash on GuildMemberAdd for slow computers
+    
 ## [1.7.0]
 
 ### Info:
