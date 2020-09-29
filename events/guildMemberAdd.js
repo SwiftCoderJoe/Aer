@@ -1,13 +1,16 @@
 module.exports = (client, db, member) => {
+  const config = require(`${process.cwd()}/config/config.json`)
 
   // MARK: Welcome message
 
   // Look for "new-members" channel
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'new-members')
-  // If it doesn't exist, skip
-  if (!channel) return
-  // Send welcome message
-  channel.send(`Welcome to the server, ${member}`);
+  const channel = member.guild.channels.cache.get(config[member.guild.id].members.infoChannel)
+  // If it exists, send a message
+  if (channel) {
+    var welcomeText = config[member.guild.id].members.memberAddMessage.replace(/%USER%/gmi, member).replace(/%GUILDNAME%/gmi, `**${member.guild}**`)
+
+    channel.send(welcomeText);
+  }
 
   // MARK: Database add
 
