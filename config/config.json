@@ -13,6 +13,10 @@
                 "559846717676322837"
             ],
             "allowSwearWords" : false
+        },
+        "members" : {
+            "infoChannel" : "543918696419033098",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
         }
     }
 }
