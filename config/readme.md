@@ -41,6 +41,16 @@ If your bot is in multiple servers, you can add another Guild ID to the config f
 
 Each of these values correspond to things relating to the points system.
 
+### difficulty
+
+This value signifies how hard it is to level up. The closer it is to zero, the harder it is to level up, and the higher it is, the easier it is to level up. 1 is recommended. It is not recommended to go higher than 1.
+
+It is configured like this:
+
+    "difficulty" : "0.25"
+
+As you can see, decimals are allowed.
+
 ### infoChannel
 
 This value will signify the channel you want points info to be sent in. This info includes level up notifications and level up role add (see: levelUpRoles) notifications.
