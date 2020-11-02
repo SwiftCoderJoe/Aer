@@ -9,6 +9,10 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.9.0
+    * **Added** 2 new warn commands
+    * **Added** Ability to change welcome message and channel
+    * **Fixed** Major levels bug and new Discord API compatibility
 * 1.8.0
     * **Added** warn command
     * **Added** numbering to leaderboard command
@@ -17,9 +21,6 @@ This section only shows the 3 most recent releases. To see the full changelog, v
     * **Added** update command
     * **Added** restart command
     * **Added** modRoles config functionality
-* 1.6.0
-    * **Added** ecosystem file for pm2
-    * **Fixed** dbt help command
 
 ## Meta
 

@@ -12,7 +12,7 @@ module.exports = (client, db, msg) => {
   console.log(`DATABASE_CHECK: Running startup database check...`)
   // Iterate through each guild, and then through every member of every guild
   for (guild of guilds) {
-    let guildMembers = Array.from(guild.members.cache.array())
+    guild.members.fetch().then(guildMembersFetched => {let guildMembers = Array.from(guildMembersFetched.array())
 
     console.log(`DATABASE_CHECK: Checking guild ${guild}...`)
 
@@ -35,6 +35,8 @@ module.exports = (client, db, msg) => {
         addDefaultData(guildUser.user.id, guild.id)
       }
     }
+  });
+    
   }
 
   console.log(`DATABASE_CHECK: DB check complete.`)

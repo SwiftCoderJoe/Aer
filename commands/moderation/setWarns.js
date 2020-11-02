@@ -1,15 +1,15 @@
 const { Command } = require(`discord.js-commando`)
 
-module.exports = class WarnCommand extends Command {
+module.exports = class SetWarnsCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `warn`,
+      name: `setwarns`,
       aliases: [],
       group: `moderation`,
-      memberName: `warn`,
-      description: `Warns a specific user.`,
+      memberName: `setwarns`,
+      description: `Sets the WarnTimes for a specific user.`,
       guildOnly: true,
-      examples: [`warn @user#0000 ALL CAPS TYPING`],
+      examples: [`setWarns @user#0000 0`],
       args: [
         {
           key: `user`,
@@ -17,15 +17,15 @@ module.exports = class WarnCommand extends Command {
           type: `user`
         },
         {
-          key: `reason`,
-          prompt: `For what reason is this user being warned?`,
-          type: `string` 
+          key: `number`,
+          prompt: `What should the Warns be set to?`,
+          type: `integer` 
         }
 
       ]
     })
   }
-  run (msg, { user, reason }) {
+  run (msg, { user, number }) {
     try {
       // Constants
       const Database = require(`better-sqlite3`)
@@ -52,18 +52,18 @@ module.exports = class WarnCommand extends Command {
 
       if (canWarn) {
         // Carry out warn
-        const stmt = db.prepare(`UPDATE users SET warntimes = warntimes + 1 WHERE key = "${key}";`)
+        const stmt = db.prepare(`UPDATE users SET warntimes = ${number} WHERE key = "${key}";`)
         stmt.run()
 
         // Reply
-        msg.say(`User ${user.username} was warned successfully.`)
+        msg.say(`Warns for ${user.username} were successfully changed.`)
 
         // Log
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
           const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = "${key}";`)
           const newWarns = stmt.get()
-          channel.send(`${msg.author} warned user: ${user.username}.\nReason: ${reason}\nNew warnTimes value: ${newWarns.warntimes}`)
+          channel.send(`${msg.author} changed Warntimes value for user: ${user.username}.\nNew warnTimes value: ${newWarns.warntimes}`)
         }
 
       } else {

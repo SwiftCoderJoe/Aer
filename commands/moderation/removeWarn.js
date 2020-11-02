@@ -1,41 +1,35 @@
 const { Command } = require(`discord.js-commando`)
 
-module.exports = class WarnCommand extends Command {
+module.exports = class RemoveWarnsCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `warn`,
+      name: `removewarn`,
       aliases: [],
       group: `moderation`,
-      memberName: `warn`,
-      description: `Warns a specific user.`,
+      memberName: `removewarn`,
+      description: `Removes a warn for a specific user.`,
       guildOnly: true,
-      examples: [`warn @user#0000 ALL CAPS TYPING`],
+      examples: [`removeWarn @user#0000`],
       args: [
         {
           key: `user`,
-          prompt: `Who would you like to warn?`,
+          prompt: `Who would you like to remove warn from?`,
           type: `user`
-        },
-        {
-          key: `reason`,
-          prompt: `For what reason is this user being warned?`,
-          type: `string` 
         }
-
       ]
     })
   }
-  run (msg, { user, reason }) {
+  run (msg, { user }) {
     try {
       // Constants
       const Database = require(`better-sqlite3`)
       const config = require(`${process.cwd()}/config/config.json`)
-      const strongRoles = config[msg.guild.id].moderation.modRoles
-      const guildMembers = msg.guild.members 
-      const callMember = guildMembers.cache.get(msg.author.id)
-      const callMemberRoles = Array.from(callMember.roles.cache.array())
-      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
+      var strongRoles = config[msg.guild.id].moderation.modRoles
+      let guildMembers = msg.guild.members 
+      let callMember = guildMembers.cache.get(msg.author.id)
+      let callMemberRoles = Array.from(callMember.roles.cache.array())
       const key = `g${msg.guild.id}u${user.id}`
+      const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
 
       // Check if permissions work
       var canWarn = false
@@ -49,27 +43,27 @@ module.exports = class WarnCommand extends Command {
         return false
       })
 
-
+      
       if (canWarn) {
-        // Carry out warn
-        const stmt = db.prepare(`UPDATE users SET warntimes = warntimes + 1 WHERE key = "${key}";`)
+        // Carry out removewarn
+        const stmt = db.prepare(`UPDATE users SET warntimes = warntimes - 1 WHERE key = "${key}";`)
         stmt.run()
 
         // Reply
         msg.say(`User ${user.username} was warned successfully.`)
+        const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
 
         // Log
-        const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
           const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = "${key}";`)
           const newWarns = stmt.get()
-          channel.send(`${msg.author} warned user: ${user.username}.\nReason: ${reason}\nNew warnTimes value: ${newWarns.warntimes}`)
+          channel.send(`${msg.author} removed a warn from user: ${user.username}.\nNew warnTimes value: ${newWarns.warntimes}`)
         }
 
       } else {
 
         msg.say(`You cannot warn this user.`)
-
+        
       }
       
     } catch (e) {
