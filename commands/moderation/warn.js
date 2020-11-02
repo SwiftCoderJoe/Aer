@@ -27,19 +27,17 @@ module.exports = class warnsCommand extends Command {
   }
   run (msg, { user, reason }) {
     try {
+      // Constants
       const Database = require(`better-sqlite3`)
-
       const config = require(`${process.cwd()}/config/config.json`)
-      var strongRoles = config[msg.guild.id].moderation.modRoles
-      let guildMembers = msg.guild.members 
-      let callMember = guildMembers.cache.get(msg.author.id)
-      let callMemberRoles = Array.from(callMember.roles.cache.array())
-
+      const strongRoles = config[msg.guild.id].moderation.modRoles
+      const guildMembers = msg.guild.members 
+      const callMember = guildMembers.cache.get(msg.author.id)
+      const callMemberRoles = Array.from(callMember.roles.cache.array())
       const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
       const key = `g${msg.guild.id}u${user.id}`
-      const stmt = db.prepare(`UPDATE users SET warntimes = warntimes + 1 WHERE key = "${key}";`)
-      stmt.run()
 
+      // Check if permissions work
       var canWarn = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role of callMemberRoles) {
@@ -51,16 +49,27 @@ module.exports = class warnsCommand extends Command {
         return false
       })
 
+
       if (canWarn) {
+        // Carry out warn
+        const stmt = db.prepare(`UPDATE users SET warntimes = warntimes + 1 WHERE key = "${key}";`)
+        stmt.run()
+
+        // Reply
         msg.say(`User ${user.username} was warned successfully.`)
+
+        // Log
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
           const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = "${key}";`)
           const newWarns = stmt.get()
           channel.send(`${msg.author} warned user: ${user.username}.\nReason: ${reason}\nNew warnTimes value: ${newWarns.warntimes}`)
         }
+
       } else {
+
         msg.say(`You cannot warn this user.`)
+
       }
       
     } catch (e) {
