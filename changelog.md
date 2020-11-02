@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.9.0]
+
+### Info:
+    - "The 'we fixed the bug we thought we fixed multiple times but this time we actually fixed it!' update"
+
+### Added:
+    - Ability to change welcome message
+    - Ability to change welcome channel
+    - removeWarn command
+    - setWarns command
+
+### Fixed:
+    - Major levels bug (the one where new people wouldn't get added to db)
+    - Compatibility with new Discord bot requirements
+
 ## [1.8.0]
 
 ### Info: 

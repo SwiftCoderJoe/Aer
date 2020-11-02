@@ -1,6 +1,7 @@
 const Database = require('better-sqlite3')
 const { CommandoClient } = require(`discord.js-commando`)
 const token = require(`${process.cwd()}/config/token.json`)
+const { Intents } = require('discord.js')
 
 const path = require(`path`)
 
@@ -12,12 +13,18 @@ const path = require(`path`)
 var fs = require(`fs`)
 
 // commando stuff
+let intents = new Intents(Intents.ALL);
+intents.remove('GUILD_PRESENCES');
+
 const client = new CommandoClient({
   commandPrefix: `aer`,
   unknownCommandResponse: true,
   owner: `289158192955392001`,
-  disableEveryone: true
+  disableEveryone: true,
+  ws: { intents: intents }
 })
+
+
 
 client.registry
   .registerDefaultTypes()

@@ -20,7 +20,7 @@ module.exports = (client, db, msg) => {
     // Get required DB info, if it isn't ready yet, retry in  
   
     const stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
-    let userData = stmt.get()
+    const userData = stmt.get()
 
     if (userData === undefined) {
   
@@ -50,7 +50,7 @@ module.exports = (client, db, msg) => {
     */
   
   
-    let badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
+    const badWords = [`fuck`, `shit`, `ass`, `bitch`, `nigger`]
   
     if (!config[guild].moderation.allowSwearWords) {
       if (multiSearch.multiSearchFor(msg, badWords)) {
@@ -67,7 +67,7 @@ module.exports = (client, db, msg) => {
       }
     }
   
-    let timeSent = d.getTime()
+    const timeSent = d.getTime()
   
     if (userData.lastPointMsg < (timeSent - 60000)) {
       let sql = db.prepare(`UPDATE users SET points = ${userData.points + 1} WHERE key = "${key}"`)
@@ -77,6 +77,8 @@ module.exports = (client, db, msg) => {
     }
   
     const curLevel = Math.floor(
+      parseFloat(config[guild].points.difficulty)
+      *
       Math.sqrt(userData.points)
     )
   

@@ -2,6 +2,7 @@
     "_comment" : "If you don't know how to use this file, read the documentation file located in /config/readme.md . All the info you may need will be there.",
     "552946417367384085" : {
         "points" : {
+            "difficulty" : "1",
             "infoChannel" : "742409207252516905",
             "levelUpRoles" : {
             }
@@ -12,10 +13,15 @@
                 "553671305585623080"
             ],
             "allowSwearWords" : true
+        },
+        "members" : {
+            "infoChannel" : "553669025029160972",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
         }
     },
     "716011492071440505" : {
         "points" : {
+            "difficulty" : "1",
             "infoChannel" : "737530816590250015",
             "levelUpRoles" : {
             }
@@ -26,6 +32,10 @@
                 "721592018257838141"
             ],
             "allowSwearWords" : true
+        }
+        "members" : {
+            "infoChannel" : "716011492071440508",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
         }
     }
 }

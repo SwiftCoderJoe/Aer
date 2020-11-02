@@ -1,2 +1,2 @@
 yarn
-pm2 restart config/pm2.config.js
+pm2 restart aer-production
