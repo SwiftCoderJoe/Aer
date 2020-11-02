@@ -1,12 +1,12 @@
 const { Command } = require(`discord.js-commando`)
 
-module.exports = class warnsCommand extends Command {
+module.exports = class SetWarnsCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `setWarns`,
+      name: `setwarns`,
       aliases: [],
       group: `moderation`,
-      memberName: `setWarns`,
+      memberName: `setwarns`,
       description: `Sets the WarnTimes for a specific user.`,
       guildOnly: true,
       examples: [`setWarns @user#0000 0`],

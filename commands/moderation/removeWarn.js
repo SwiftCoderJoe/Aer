@@ -1,12 +1,12 @@
 const { Command } = require(`discord.js-commando`)
 
-module.exports = class warnsCommand extends Command {
+module.exports = class RemoveWarnsCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `removeWarn`,
+      name: `removewarn`,
       aliases: [],
       group: `moderation`,
-      memberName: `removeWarn`,
+      memberName: `removewarn`,
       description: `Removes a warn for a specific user.`,
       guildOnly: true,
       examples: [`removeWarn @user#0000`],
