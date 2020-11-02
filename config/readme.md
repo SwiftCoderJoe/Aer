@@ -65,7 +65,7 @@ It is configured like this:
 
 On the left side of each value, you can change the number inside the quotes to define at which level you want the bot to add the role. On the right side of each value, you can change the number inside the quotes to define the ID of the role that you want the bot to add. You can get this ID by right-clicking on the role in discord and clicking "Copy ID". You must use commas between each value.
 
-## Moderation
+## moderation
 
 This category contains values relating to Aer's automatic moderation system.
 
@@ -76,3 +76,30 @@ AllowSwearWords is a boolean value. If set to true, the bot will not remove mess
     "moderation" : {
         allowSwearWords : false
     }
+
+## members
+
+This category contains values relating to users and their actions.
+
+### infoChannel
+
+This value will signify the channel you want member info to be sent to. This info includes when users join a server, and will have more functionality soon.
+
+It is configured like this:
+
+    "infoChannel" : "717379525708873788"
+
+On the right of this value, input the ID of the channel of which you would like member info messages to be sent to. You can get this ID by right-clicking a channel in a server.
+
+### memberAddMessage
+
+This value tells the bot what it should say when a new member joins the server.
+
+It is configured like this:
+
+    "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
+
+The value on the right is the message the bot will send. You can use these keys to input special values:
+
+* %GUILDNAME* -- Shows the name of the guild (server) in bold.
+* %USER% -- Username (this WILL ping the user!).
