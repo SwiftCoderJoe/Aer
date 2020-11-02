@@ -16,7 +16,8 @@ const client = new CommandoClient({
   commandPrefix: `dbt`,
   unknownCommandResponse: true,
   owner: `289158192955392001`,
-  disableEveryone: true
+  disableEveryone: true,
+  ws: { intents: `GUILD_PRESENCES` }
 })
 
 client.registry
