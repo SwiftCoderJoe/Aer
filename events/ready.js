@@ -14,15 +14,15 @@ module.exports = (client, db, msg) => {
   for (guild of guilds) {
     guild.members.fetch().then(guildMembersFetched => {let guildMembers = Array.from(guildMembersFetched.array())
 
-    console.log(`DATABASE_CHECK: Checking guild ${guild}...`)
+    console.log(`DATABASE_CHECK: Checking guild ${guildMembers[0].guild}...`)
 
     for (guildUser of guildMembers) {
 
-      console.log(`DATABASE_CHECK: Checking user ${guildUser} from guild ${guild}...`)
+      console.log(`DATABASE_CHECK: Checking user ${guildUser} from guild ${guildUser.guild}...`)
 
       if (guildUser.user.bot) continue;
 
-      var key = `g${guild.id}u${guildUser.user.id}`
+      var key = `g${guildUser.guild.id}u${guildUser.user.id}`
 
       // Insert a new user if they don't already exist
 
@@ -32,7 +32,7 @@ module.exports = (client, db, msg) => {
       // If they didn't exist, log it and add default data
       if (changes.changes === 1) {
         console.log(`DATABASE_CHECK: User ${guildUser} has been inserted with key ${key}. Adding default data...`)
-        addDefaultData(guildUser.user.id, guild.id)
+        addDefaultData(guildUser.user.id, guildUser.guild.id)
       }
     }
   });

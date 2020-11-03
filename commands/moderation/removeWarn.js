@@ -50,7 +50,7 @@ module.exports = class RemoveWarnsCommand extends Command {
         stmt.run()
 
         // Reply
-        msg.say(`User ${user.username} was warned successfully.`)
+        msg.say(`A warn was successfully removed from ${user.username}.`)
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
 
         // Log
