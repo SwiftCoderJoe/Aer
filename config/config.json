@@ -37,5 +37,25 @@
             "infoChannel" : "716011492071440508",
             "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
         }
+    },
+    "702241230225932292" : {
+        "points" : {
+            "difficulty" : "0.75",
+            "infoChannel" : "",
+            "levelUpRoles" : {
+                "20" : "708884918901407755"
+            }
+        },
+        "moderation" : {
+            "modRoles" : [
+                    "702306305565655090",
+                    "708884918901407755"
+            ],
+            "allowSwearWords" : true
+        },
+        "members" : {
+            "infoChannel" : "702241230657945682",
+            "memberAddMessage" : "Welcome to hell, %USER%."
+        }
     }
 }
