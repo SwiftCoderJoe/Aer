@@ -1,4 +1,6 @@
 module.exports = (client, db, msg) => {
+  const config = require(`${process.cwd()}/config/config.json`);
+
 
   function addDefaultData (UId, UGuild) {
     let key = `g${UGuild}u${UId}`
@@ -16,10 +18,12 @@ module.exports = (client, db, msg) => {
 
     console.log(`DATABASE_CHECK: Checking guild ${guildMembers[0].guild}...`)
 
+    // Iterate through each user
     for (guildUser of guildMembers) {
 
       console.log(`DATABASE_CHECK: Checking user ${guildUser} from guild ${guildUser.guild}...`)
 
+      // Don't add bots to DB
       if (guildUser.user.bot) continue;
 
       var key = `g${guildUser.guild.id}u${guildUser.user.id}`
@@ -31,8 +35,29 @@ module.exports = (client, db, msg) => {
 
       // If they didn't exist, log it and add default data
       if (changes.changes === 1) {
+
         console.log(`DATABASE_CHECK: User ${guildUser} has been inserted with key ${key}. Adding default data...`)
         addDefaultData(guildUser.user.id, guildUser.guild.id)
+
+      } else { 
+        // If they already exist, compute level
+
+        let stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
+        const userData = stmt.get()
+
+        const curLevel = Math.floor(
+          parseFloat(config[guild].points.difficulty)
+          *
+          Math.sqrt(userData.points)
+        )
+
+        console.log(`Starting audit for user ${guildUser} of ${guildUser.guild}: points = ${userData.points}, actual level = ${userData.level}, computed level = ${curLevel}, lastPointMsg = ${userData.lastSent}, warns = ${userData.warnTimes}`);
+
+        // If computed level != actual level, update it
+        if (userData.level != curLevel) {
+          stmt = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = "${key}"`)
+          stmt.run();
+        }
       }
     }
   });
