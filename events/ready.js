@@ -61,7 +61,7 @@ module.exports = (client, db, msg) => {
       Math.sqrt(userData.points)
     )
   
-    console.log(`Starting audit for user ${guildUser} of ${guildUser.guild}: points = ${userData.points}, actual level = ${userData.level}, computed level = ${curLevel}, lastPointMsg = ${userData.lastSent}, warns = ${userData.warnTimes}`);
+    console.log(`DATABASE_CHECK: Starting audit for user ${guildUser} of ${guildUser.guild}: points = ${userData.points}, actual level = ${userData.level}, computed level = ${curLevel}, lastPointMsg = ${userData.lastSent}, warns = ${userData.warnTimes}`);
   
     // If computed level != actual level, update it
     if (userData.level != curLevel) {
