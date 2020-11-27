@@ -3,7 +3,7 @@ module.exports = (client, db, member) => {
 
   // MARK: Welcome message
 
-  // Look for "new-members" channel
+  // Look for member info channel
   const channel = member.guild.channels.cache.get(config[member.guild.id].members.infoChannel)
   // If it exists, send a message
   if (channel) {
