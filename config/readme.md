@@ -93,7 +93,7 @@ This category contains values relating to users and their actions.
 
 ### infoChannel
 
-This value will signify the channel you want member info to be sent to. This info includes when users join a server, and will have more functionality soon.
+This value will signify the channel you want member info to be sent to. This info includes when users join a server and when users leave a server.
 
 It is configured like this:
 
