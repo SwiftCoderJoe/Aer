@@ -56,7 +56,7 @@ module.exports = (client, db, msg) => {
   
     // Compute level
     const curLevel = Math.floor(
-      parseFloat(config[guild].points.difficulty)
+      parseFloat(config[guildUser.guild.id].points.difficulty)
       *
       Math.sqrt(userData.points)
     )
@@ -65,6 +65,7 @@ module.exports = (client, db, msg) => {
   
     // If computed level != actual level, update it
     if (userData.level != curLevel) {
+      console.log("Found incorrect level. Fixing...")
       stmt = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = "${key}"`)
       stmt.run();
     }
