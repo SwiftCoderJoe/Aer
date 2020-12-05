@@ -3,6 +3,8 @@ module.exports = (client, db, member) => {
   const UID = member.id
   const key = `g${guild}u${UID}`
 
+  const config = require(`${process.cwd()}/config/config.json`)
+
   // Look for member info channel
   const channel = member.guild.channels.cache.get(config[member.guild.id].members.infoChannel)
   // If it exists, send a message
