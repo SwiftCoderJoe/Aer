@@ -93,7 +93,7 @@ This category contains values relating to users and their actions.
 
 ### infoChannel
 
-This value will signify the channel you want member info to be sent to. This info includes when users join a server, and will have more functionality soon.
+This value will signify the channel you want member info to be sent to. This info includes when users join a server and when users leave a server.
 
 It is configured like this:
 
@@ -111,5 +111,18 @@ It is configured like this:
 
 The value on the right is the message the bot will send. You can use these keys to input special values:
 
-* %GUILDNAME* -- Shows the name of the guild (server) in bold.
+* %GUILDNAME% -- Shows the name of the guild (server) in bold.
+* %USER% -- Username (this WILL ping the user!).
+
+### memberRemoveMessage
+
+This value tells the bot what it should say when a member leaves a server. This can be triggered by any number of things, including bans and kicks.
+
+It is configured like this:
+
+    "memberRemoveMessage" : "%USER% has had enough and is leaving."
+
+You can use these keys to input special values:
+
+* %GUILDNAME% -- The name of the guild (server) in bold.
 * %USER% -- Username (this WILL ping the user!).

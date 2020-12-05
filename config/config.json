@@ -17,7 +17,28 @@
         },
         "members" : {
             "infoChannel" : "543918696419033098",
-            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
+            "memberRemoveMessage" : "%USER% has had enough and is leaving."
+        }
+    },
+    "547900323839344688" : {
+        "points" : {
+            "difficulty" : "1",
+            "infoChannel" : "",
+            "levelUpRoles" : {
+            }
+        },
+        "moderation" : {
+            "modRoles" : [
+                "784879049397895238"
+            ],
+            "allowSwearWords" : false
+        },
+        "members" : {
+            "infoChannel" : "543918696419033098",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
+            "memberRemoveMessage" : "%USER% has had enough and is leaving."
         }
     }
+    
 }
