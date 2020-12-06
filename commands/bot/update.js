@@ -1,7 +1,7 @@
 const { Command } = require(`discord.js-commando`)
 const { exec } = require("child_process");
 
-module.exports = class BanCommand extends Command {
+module.exports = class RestartCommand extends Command {
   constructor (client) {
     super(client, {
       name: `update`,
