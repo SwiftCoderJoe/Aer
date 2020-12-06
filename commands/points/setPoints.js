@@ -1,24 +1,24 @@
 const { Command } = require(`discord.js-commando`)
 
-module.exports = class SetWarnsCommand extends Command {
+module.exports = class SetPointsCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `setwarns`,
+      name: `setpoints`,
       aliases: [],
-      group: `moderation`,
-      memberName: `setwarns`,
-      description: `Sets the WarnTimes for a specific user.`,
+      group: `points`,
+      memberName: `setpoints`,
+      description: `Sets the points for a specific user.`,
       guildOnly: true,
-      examples: [`setWarns @user#0000 0`],
+      examples: [`setpoints @user#0000 0`],
       args: [
         {
           key: `user`,
-          prompt: `Who would you like to warn?`,
+          prompt: `Which user's points should be set?`,
           type: `user`
         },
         {
           key: `number`,
-          prompt: `What should the Warns be set to?`,
+          prompt: `What should the points value be set to?`,
           type: `integer` 
         }
 
@@ -31,7 +31,7 @@ module.exports = class SetWarnsCommand extends Command {
       const Database = require(`better-sqlite3`)
       const config = require(`${process.cwd()}/config/config.json`)
       const strongRoles = config[msg.guild.id].moderation.modRoles
-      const guildMembers = msg.guild.members 
+      const guildMembers = msg.guild.members
       // This is done to specifically get the guildMember
       const callMember = guildMembers.cache.get(msg.author.id)
       const callMemberRoles = Array.from(callMember.roles.cache.array())
@@ -39,11 +39,11 @@ module.exports = class SetWarnsCommand extends Command {
       const key = `g${msg.guild.id}u${user.id}`
 
       // Check if permissions work
-      var canWarn = false
+      var canSetPoints = false
       strongRoles.some(function (requiredRole, _index1) {
         for (let role of callMemberRoles) {
           if (role.id === requiredRole) {
-            canWarn = true
+            canSetPoints = true
             return true
           }
         }
@@ -51,20 +51,20 @@ module.exports = class SetWarnsCommand extends Command {
       })
 
 
-      if (canWarn) {
+      if (canSetPoints) {
         // Carry out warn
-        const stmt = db.prepare(`UPDATE users SET warntimes = ${number} WHERE key = "${key}";`)
+        const stmt = db.prepare(`UPDATE users SET points = ${number} WHERE key = "${key}";`)
         stmt.run()
 
         // Reply
-        msg.say(`Warns for ${user.username} were successfully changed.`)
+        msg.say(`Points for ${user.username} were successfully changed. Level will update when the user sends a message.`)
 
         // Log
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
-          const stmt = db.prepare(`SELECT warntimes FROM users WHERE key = "${key}";`)
-          const newWarns = stmt.get()
-          channel.send(`${msg.author} changed Warntimes value for user: ${user.username}.\nNew warnTimes value: ${newWarns.warntimes}`)
+          const stmt = db.prepare(`SELECT points FROM users WHERE key = "${key}";`)
+          const newPoints = stmt.get()
+          channel.send(`${msg.author} changed points value for user: ${user.username}.\nNew points value: ${newPoints.points}`)
         }
 
       } else {

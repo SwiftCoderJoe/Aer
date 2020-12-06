@@ -9,6 +9,10 @@ TBW
 ## Release History
 This section only shows the 3 most recent releases. To see the full changelog, visit ``changelog.md``.
 
+* 1.10.0
+    * **Added** functionality for the bot to fix incorrect levels on startup
+    * **Added** member leave messages
+    * **Added** setpoints command
 * 1.9.0
     * **Added** 2 new warn commands
     * **Added** Ability to change welcome message and channel
@@ -17,10 +21,6 @@ This section only shows the 3 most recent releases. To see the full changelog, v
     * **Added** warn command
     * **Added** numbering to leaderboard command
     * **Fixed** crash on slow computers when running GuildMemberAdd
-* 1.7.0
-    * **Added** update command
-    * **Added** restart command
-    * **Added** modRoles config functionality
 
 ## Meta
 
