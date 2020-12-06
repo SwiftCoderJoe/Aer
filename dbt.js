@@ -17,7 +17,7 @@ let intents = new Intents(Intents.ALL);
 intents.remove('GUILD_PRESENCES');
 
 const client = new CommandoClient({
-  commandPrefix: `dbt`,
+  commandPrefix: `aer`,
   unknownCommandResponse: true,
   owner: `289158192955392001`,
   disableEveryone: true,
