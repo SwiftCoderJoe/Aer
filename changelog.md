@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), adapted to my personal feelings because theres a lot of stuff that I am too lazy to document.
 Most recent changes are located at the top.
 
+## [1.10.0]
+
+### Info:
+    - "The 'big number small update' update"
+
+### Added:
+    - Database audits and recomputes on startup
+    - Essentially what that means is that if levels are wrong on bot startup for whatever reason, they will be fixed
+    - setpoints command, so people can stop annoying me to change the points on the databse
+    - config entry and functionality for a member leave message
+
+### Fixed:
+    - Security vulnerability
+    - Some typos
+
 ## [1.9.0]
 
 ### Info:
