@@ -64,7 +64,7 @@ module.exports = class SetPointsCommand extends Command {
         if (channel) {
           const stmt = db.prepare(`SELECT points FROM users WHERE key = "${key}";`)
           const newPoints = stmt.get()
-          channel.send(`${msg.author} changed Warntimes value for user: ${user.username}.\nNew warnTimes value: ${newPoints.points}`)
+          channel.send(`${msg.author} changed points value for user: ${user.username}.\nNew points value: ${newPoints.points}`)
         }
 
       } else {
