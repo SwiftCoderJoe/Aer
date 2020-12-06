@@ -16,7 +16,8 @@
         },
         "members" : {
             "infoChannel" : "553669025029160972",
-            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
+            "memberRemoveMessage" : "%USER% has had enough and is leaving."
         }
     },
     "716011492071440505" : {
@@ -54,7 +55,8 @@
         },
         "members" : {
             "infoChannel" : "702241230657945682",
-            "memberAddMessage" : "Welcome to hell, %USER%."
+            "memberAddMessage" : "Welcome to hell, %USER%.",
+            "memberRemoveMessage" : "%USER% lol bye"
         }
     }
 }

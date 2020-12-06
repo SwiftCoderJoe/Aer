@@ -3,8 +3,6 @@ module.exports = (client, db, msg) => {
   if (msg.author.bot) return
   if (!msg.guild) return
 
-
-  // This is done to make the recursive setTimeout easier to understand
   messageFunction(0)
 
   function messageFunction(tryNum) {
@@ -62,7 +60,7 @@ module.exports = (client, db, msg) => {
         sql.run()
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
-          channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
+          channel.send(`Warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
         }
       }
     }
@@ -84,7 +82,7 @@ module.exports = (client, db, msg) => {
   
     console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)
   
-    if (userData.level < curLevel) {
+    if (userData.level != curLevel) {
   
       if (config[guild].points.infoChannel === "") {
         msg.reply(`you've leveled up to level **${curLevel}**!`)
