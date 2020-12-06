@@ -84,7 +84,7 @@ module.exports = (client, db, msg) => {
   
     console.log(`User ${msg.author.username} now has ${userData.points} points. Level ${curLevel} expected, level ${userData.level}, lastSent = ${userData.lastPointMsg}`)
   
-    if (userData.level < curLevel) {
+    if (userData.level != curLevel) {
   
       if (config[guild].points.infoChannel === "") {
         msg.reply(`you've leveled up to level **${curLevel}**!`)

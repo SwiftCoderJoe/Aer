@@ -26,6 +26,7 @@ module.exports = class RemoveWarnsCommand extends Command {
       const config = require(`${process.cwd()}/config/config.json`)
       var strongRoles = config[msg.guild.id].moderation.modRoles
       let guildMembers = msg.guild.members 
+      // This is done to specifically get the guildMember
       let callMember = guildMembers.cache.get(msg.author.id)
       let callMemberRoles = Array.from(callMember.roles.cache.array())
       const key = `g${msg.guild.id}u${user.id}`
