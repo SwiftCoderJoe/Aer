@@ -3,8 +3,6 @@ module.exports = (client, db, msg) => {
   if (msg.author.bot) return
   if (!msg.guild) return
 
-
-  // This is done to make the recursive setTimeout easier to understand
   messageFunction(0)
 
   function messageFunction(tryNum) {
@@ -62,7 +60,7 @@ module.exports = (client, db, msg) => {
         sql.run()
         const channel = msg.guild.channels.cache.find(ch => ch.name === 'logs')
         if (channel) {
-          channel.send(`warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
+          channel.send(`Warned user: ${msg.author.username} due to LANGUAGE. New warnTimes value: ${userData.warntimes + 1}`)
         }
       }
     }
