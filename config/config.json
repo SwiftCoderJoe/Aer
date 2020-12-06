@@ -1,44 +1,62 @@
 {
     "_comment" : "If you don't know how to use this file, read the documentation file located in /config/readme.md . All the info you may need will be there.",
-    "542462471345274890" : {
+    "552946417367384085" : {
         "points" : {
             "difficulty" : "1",
-            "infoChannel" : "740002879150096394",
+            "infoChannel" : "742409207252516905",
             "levelUpRoles" : {
-                "1" : "725356277634695349"
             }
         },
         "moderation" : {
             "modRoles" : [
-                "744282450628444223",
-                "559846717676322837"
+                "552946937825853441",
+                "553671305585623080"
             ],
-            "allowSwearWords" : false
+            "allowSwearWords" : true
         },
         "members" : {
-            "infoChannel" : "543918696419033098",
+            "infoChannel" : "553669025029160972",
             "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
             "memberRemoveMessage" : "%USER% has had enough and is leaving."
         }
     },
-    "547900323839344688" : {
+    "716011492071440505" : {
         "points" : {
             "difficulty" : "1",
+            "infoChannel" : "737530816590250015",
+            "levelUpRoles" : {
+            }
+        },
+        "moderation" : {
+            "modRoles" : [
+                "716016957421518940",
+                "721592018257838141"
+            ],
+            "allowSwearWords" : true
+        },
+        "members" : {
+            "infoChannel" : "716011492071440508",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
+        }
+    },
+    "702241230225932292" : {
+        "points" : {
+            "difficulty" : "0.75",
             "infoChannel" : "",
             "levelUpRoles" : {
             }
         },
         "moderation" : {
             "modRoles" : [
-                "784879049397895238"
+                    "702306305565655090",
+                    "708884918901407755"
             ],
-            "allowSwearWords" : false
+            "allowSwearWords" : true
         },
         "members" : {
-            "infoChannel" : "543918696419033098",
-            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
-            "memberRemoveMessage" : "%USER% has had enough and is leaving."
+            "infoChannel" : "702241230657945682",
+            "memberAddMessage" : "Welcome to hell, %USER%.",
+            "memberRemoveMessage" : "%USER% lol bye"
         }
     }
-    
 }
