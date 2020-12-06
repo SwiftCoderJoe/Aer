@@ -32,6 +32,7 @@ module.exports = class SetWarnsCommand extends Command {
       const config = require(`${process.cwd()}/config/config.json`)
       const strongRoles = config[msg.guild.id].moderation.modRoles
       const guildMembers = msg.guild.members 
+      // This is done to specifically get the guildMember
       const callMember = guildMembers.cache.get(msg.author.id)
       const callMemberRoles = Array.from(callMember.roles.cache.array())
       const db = new Database(`${process.cwd()}/db/Data.db`, { /* verbose: console.log */ })
