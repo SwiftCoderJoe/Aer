@@ -36,7 +36,8 @@
         },
         "members" : {
             "infoChannel" : "716011492071440508",
-            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!"
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
+            "memberRemoveMessage" :"%USER% has had enough and is leaving."
         }
     },
     "702241230225932292" : {
