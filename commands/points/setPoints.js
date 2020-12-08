@@ -69,7 +69,7 @@ module.exports = class SetPointsCommand extends Command {
 
       } else {
 
-        msg.say(`You cannot warn this user.`)
+        msg.say(`You cannot set points.`)
 
       }
       
