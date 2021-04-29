@@ -34,7 +34,7 @@ client.registry
     // [`pc`, `General stuff about computers.`],
     // [`economy`, `Economy related commands.`],
     // [`animals`, `All sorts of animal related commands.`],
-    //[`fun`, `Very fun commands ;)`],
+    [`fun`, `Very fun commands ;)`],
     /* [`mods`, `Moderation related commands.`], */
     // [`owner`, `Owner-only commands.`],
     //[`info`, `Informative commands.`],
