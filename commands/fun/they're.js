@@ -16,7 +16,7 @@ module.exports = class youngmanCommand extends Command {
   }
   run (msg) {
     try {
-      msg.reply("youngman")
+      msg.reply("they're")
       msg.channel.send("https://tenor.com/view/memes-meme-ironic-explosion-gif-18934104")
     } catch (e) {
       msg.reply(
