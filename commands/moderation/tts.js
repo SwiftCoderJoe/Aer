@@ -36,6 +36,8 @@ module.exports = class TTSCommand extends Command {
                 }
             }
 
+            finalMessages.push(workingString)
+
             for (var message of finalMessages) {
                 msg.channel.send(message, {tts: true})
             }
