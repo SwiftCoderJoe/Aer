@@ -21,22 +21,24 @@ module.exports = class TTSCommand extends Command {
   }
   run (msg, {ttsContent}) {
     try {
-        var ttsWords = ttsContent.split(` `)
+        if (msg.guild.id == 542462471345274890) {
+            var ttsWords = ttsContent.split(` `)
 
-        var finalMessages = []
-        var workingString = ""
+            var finalMessages = []
+            var workingString = ""
 
-        for (var word of ttsWords) {
-            if ((workingString.length + word.length) < 200) {
-                workingString = workingString + " " + word
-            } else {
-                finalMessages.push(workingString)
-                workingString = word
+            for (var word of ttsWords) {
+                if ((workingString.length + word.length) < 200) {
+                    workingString = workingString + " " + word
+                } else {
+                    finalMessages.push(workingString)
+                    workingString = word
+                }
             }
-        }
 
-        for (var message of finalMessages) {
-            msg.channel.send(message, {tts: true})
+            for (var message of finalMessages) {
+                msg.channel.send(message, {tts: true})
+            }
         }
 
     } catch (e) {
