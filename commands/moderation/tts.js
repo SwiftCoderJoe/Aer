@@ -21,7 +21,7 @@ module.exports = class TTSCommand extends Command {
   }
   run (msg, {ttsContent}) {
     try {
-        if (msg.guild.id == 542462471345274890) {
+        if (msg.guild.id == 702241230225932292) {
             var ttsWords = ttsContent.split(` `)
 
             var finalMessages = []
