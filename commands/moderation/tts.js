@@ -1,0 +1,52 @@
+const { Command } = require(`discord.js-commando`)
+
+module.exports = class TTSCommand extends Command {
+  constructor (client) {
+    super(client, {
+        name: `tts`,
+        aliases: [],
+        group: `moderation`,
+        memberName: `tts`,
+        description: `tts The fitnessgram pacer test is a multistage aerobic capacity test`,
+        guildOnly: true,
+        examples: [`general`],
+        args: [
+            {
+                key: `ttsContent`,
+                prompt: `What would you like to send?`,
+                type: `string` 
+            }
+        ]
+    })
+  }
+  run (msg, {ttsContent}) {
+    try {
+        if (msg.guild.id == 542462471345274890) {
+            var ttsWords = ttsContent.split(` `)
+
+            var finalMessages = []
+            var workingString = ""
+
+            for (var word of ttsWords) {
+                if ((workingString.length + word.length) < 200) {
+                    workingString = workingString + " " + word
+                } else {
+                    finalMessages.push(workingString)
+                    workingString = word
+                }
+            }
+
+            for (var message of finalMessages) {
+                msg.channel.send(message, {tts: true})
+            }
+        }
+
+    } catch (e) {
+      msg.reply(
+        `An error has occured. Try waiting for a moment before retrying. Error: (${
+          e
+        })`
+      )
+    }
+  }
+}

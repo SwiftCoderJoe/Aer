@@ -45,7 +45,7 @@ module.exports = (client, db, msg) => {
 
   
   function addDefaultData (key, UId, UGuild) {
-    let sql = db.prepare(`UPDATE users SET user = "${UId}", guild = ${UGuild}, points = 0, level = 0, lastPointMsg = 0, warntimes = 0 WHERE key = "${key}";`)
+    let sql = db.prepare(`UPDATE users SET user = "${UId}", guild = "${UGuild}", points = 0, level = 0, lastPointMsg = 0, warntimes = 0 WHERE key = "${key}";`)
     sql.run()
   }
   
