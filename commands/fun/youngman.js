@@ -16,6 +16,7 @@ module.exports = class youngmanCommand extends Command {
   }
   run (msg) {
     try {
+      console.log(msg.guild.id)
       switch(msg.guild.id) {
         case "702241230225932292":
           console.log("youngman")
@@ -27,6 +28,7 @@ module.exports = class youngmanCommand extends Command {
           msg.reply("Anders made me turn this off. No youngman for you.")
           break;
         default:
+          console.log("default")
           break;
       }
     } catch (e) {
