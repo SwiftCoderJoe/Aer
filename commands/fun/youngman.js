@@ -16,7 +16,7 @@ module.exports = class youngmanCommand extends Command {
   }
   run (msg) {
     try {
-      switch(msg.guild) {
+      switch(msg.guild.id) {
         case 702241230225932292: 
           msg.reply("youngman")
           msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
