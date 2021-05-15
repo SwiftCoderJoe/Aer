@@ -16,8 +16,17 @@ module.exports = class youngmanCommand extends Command {
   }
   run (msg) {
     try {
-      msg.reply("youngman")
-      msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
+      switch(msg.guild) {
+        case "702241230225932292": 
+          msg.reply("youngman")
+          msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
+          break;
+        case "716011492071440505":
+          msg.reply("Anders made me turn this off. No youngman for you.")
+          break;
+        default:
+          break;
+      }
     } catch (e) {
       msg.reply(
         `An error has occured. Try waiting for a moment before retrying. Error: (${
