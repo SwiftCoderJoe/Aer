@@ -106,17 +106,6 @@ module.exports = (client, db, msg) => {
         
       }
     }
-
-    // If this message is a reply to another message, do something special.
-    // WARN: This should be updated to use msg.interactions when we update to v13.
-    if (msg.reference != undefined) {
-      // First, fetch the initial message.
-      msg.channel.messages.fetch(msg.reference.messageID)
-        .then(message =>
-          message.reply(`Yo mama or something idk!`) // Theoretically by Discord.js v13 this would be an inline reply.
-        )
-        .catch(console.error)
-    }
   }
 
 }
