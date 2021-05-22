@@ -18,15 +18,23 @@ module.exports = class youngmanCommand extends Command {
     try {
       console.log(msg.guild.id)
       switch(msg.guild.id) {
-        case "702241230225932292":
-          console.log("youngman")
+        // HQ
+        case `702241230225932292`:
           msg.reply("youngman")
           msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
           break;
-        case "716011492071440505":
-          console.log("no youngman")
-          msg.reply("Anders made me turn this off. No youngman for you.")
+
+        // People Talking
+        case `716011492071440505`:
+          if (msg.channel.id == `844774637605879810`) {
+            msg.reply("youngman")
+            msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
+          } else {
+            msg.reply(`No youngman outside of #mature-stuff.`)
+          }
           break;
+
+        // Do nothing everywhere else
         default:
           console.log("default")
           break;
