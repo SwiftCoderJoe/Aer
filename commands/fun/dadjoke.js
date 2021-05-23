@@ -24,7 +24,7 @@ module.exports = class dadjokeCommand extends Command {
             msg.channel.messages.fetch(msg.reference.messageID)
             .then(message => {
                 // First, look for i'm, im, I am, etc.
-                var matchLocation = message.content.match(/I('| a|)m[[:punct:]]? /mi)
+                var matchLocation = message.content.match(/I('| a|)m[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]? /mi)
 
                 if (matchLocation != null) {
 
