@@ -16,12 +16,7 @@ module.exports = class DeathVCCommand extends Command {
   }
   async run (msg) {
     try {
-        console.log(`Fired`)
-        console.log(msg.member.voice)
-
         if (msg.member.voice.channel) {
-            console.log(`Made it here`)
-
             // Join the voice call
             const connection = await msg.member.voice.channel.join()
 
