@@ -26,7 +26,7 @@ module.exports = class DeathVCCommand extends Command {
             const connection = await msg.member.voice.channel.join()
 
             // Get death dispatcher
-            const dispatcher = connection.play(`${process.cwd()}/audio/death.mp3`)
+            const dispatcher = connection.play(`${process.cwd()}/audio/death.ogg`)
             dispatcher.setVolume(0.05)
 
             dispatcher.on(`finish`, () => {
