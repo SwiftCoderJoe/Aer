@@ -23,7 +23,7 @@
   "license": "GNU GPL v3",
   "private": true,
   "engines": {
-    "node": "13.14.0",
-    "yarn": "1.22.4"
+    "node": "14.17.5",
+    "yarn": "3.0.1"
   }
 }
