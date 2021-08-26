@@ -8,7 +8,6 @@
     "graceful-fs": "^4.1.15",
     "path": "^0.12.7",
     "random-hex-color": "^1.0.1",
-    "sqlite": "^2.0.0",
     "uws": "^100.0.1"
   },
   "name": "aer",
@@ -23,7 +22,7 @@
   "license": "GNU GPL v3",
   "private": true,
   "engines": {
-    "node": "13.14.0",
-    "yarn": "1.22.4"
+    "node": "14.17.5",
+    "yarn": "3.0.1"
   }
 }
