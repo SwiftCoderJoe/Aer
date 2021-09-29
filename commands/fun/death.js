@@ -25,7 +25,6 @@ module.exports = class DeathVCCommand extends Command {
             dispatcher.setVolume(0.05)
 
             dispatcher.on(`finish`, () => {
-                console.log(`Finished.`)
                 connection.disconnect()
             })
         }

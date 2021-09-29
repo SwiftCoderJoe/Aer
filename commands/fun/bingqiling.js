@@ -1,16 +1,16 @@
 const { Command } = require(`discord.js-commando`)
-const { MessageEmbed, Message } = require('discord.js') 
+const { MessageEmbed } = require('discord.js')
 
-module.exports = class DoingVCCommand extends Command {
+module.exports = class youngmanCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `doing`,
-      aliases: [],
+      name: `bingqiling`,
+      aliases: [`bql`],
       group: `fun`,
-      memberName: `doing`,
-      description: `aer doing`,
+      memberName: `binqiling`,
+      description: `aer bingqiling`,
       guildOnly: true,
-      examples: [`doing`],
+      examples: [`binqiling`],
       args: []
     })
   }
@@ -21,7 +21,7 @@ module.exports = class DoingVCCommand extends Command {
             const connection = await msg.member.voice.channel.join()
 
             // Get death dispatcher
-            const dispatcher = connection.play(`${process.cwd()}/audio/doing.ogg`)
+            const dispatcher = connection.play(`${process.cwd()}/audio/bql.ogg`)
 
             dispatcher.on(`finish`, () => {
                 connection.disconnect()
