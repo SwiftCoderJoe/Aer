@@ -24,7 +24,6 @@ module.exports = class FartVCCommand extends Command {
             const dispatcher = connection.play(`${process.cwd()}/audio/fart.ogg`)
 
             dispatcher.on(`finish`, () => {
-                console.log(`Finished.`)
                 connection.disconnect()
             })
         }

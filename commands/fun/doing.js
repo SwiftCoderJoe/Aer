@@ -24,7 +24,6 @@ module.exports = class DoingVCCommand extends Command {
             const dispatcher = connection.play(`${process.cwd()}/audio/doing.ogg`)
 
             dispatcher.on(`finish`, () => {
-                console.log(`Finished.`)
                 connection.disconnect()
             })
         }
