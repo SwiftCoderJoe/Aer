@@ -1,6 +1,5 @@
 const { Command } = require(`discord.js-commando`)
 const { MessageEmbed, Message } = require('discord.js') 
-const AudioManager = require(`./../../libs/AudioManager.js`)
 
 module.exports = class FartVCCommand extends Command {
   constructor (client) {
@@ -18,9 +17,15 @@ module.exports = class FartVCCommand extends Command {
   async run (msg) {
     try {
         if (msg.member.voice.channel) {
+            // Join the voice call
+            const connection = await msg.member.voice.channel.join()
 
-            AudioManager.play(msg.member.voice.channel, `${process.cwd()}/audio/fart.ogg`, 1)
+            // Get fart dispatcher
+            const dispatcher = connection.play(`${process.cwd()}/audio/fart.ogg`)
 
+            dispatcher.on(`finish`, () => {
+                connection.disconnect()
+            })
         }
     } catch (e) {
       msg.reply(

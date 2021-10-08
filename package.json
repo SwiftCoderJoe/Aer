@@ -8,8 +8,7 @@
     "graceful-fs": "^4.1.15",
     "path": "^0.12.7",
     "random-hex-color": "^1.0.1",
-    "uws": "^100.0.1",
-    "ytdl-core": "^4.9.1"
+    "uws": "^100.0.1"
   },
   "name": "aer",
   "version": "1.10.0",
