@@ -117,6 +117,7 @@ __metadata:
     path: ^0.12.7
     random-hex-color: ^1.0.1
     uws: ^100.0.1
+    ytdl-core: ^4.9.1
   languageName: unknown
   linkType: soft
 
@@ -711,6 +712,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"m3u8stream@npm:^0.8.3":
+  version: 0.8.4
+  resolution: "m3u8stream@npm:0.8.4"
+  dependencies:
+    miniget: ^4.0.0
+    sax: ^1.2.4
+  checksum: e8a04e839e26361f20b284893eb6958d774a25c88aca84a6d6d67707b462d5d2acaf421d9d144bd4006bb75ea6982321ba8c26ccc3e470cec8da23d06b725dcb
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -756,6 +767,13 @@ __metadata:
   dependencies:
     mime-db: 1.49.0
   checksum: 4487dfd2f872126d2c219ec731ad47a6169a438d5a4cce6ecef7594ce08eaefaf0d85429485a76ec005f095016c7ec488a24cf8bfcc0ea06de0355e23395746f
+  languageName: node
+  linkType: hard
+
+"miniget@npm:^4.0.0":
+  version: 4.2.1
+  resolution: "miniget@npm:4.2.1"
+  checksum: 2d72b947f8ca16f63ee170151cf4bfdfa76135147f5be28b4e3805e1e77a4e3449f77ebf918d57b75b3003109dc818e295b5eb22d932767d86120f17bd59569b
   languageName: node
   linkType: hard
 
@@ -1152,6 +1170,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.1.3, sax@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4"
+  checksum: d3df7d32b897a2c2f28e941f732c71ba90e27c24f62ee918bd4d9a8cfb3553f2f81e5493c7f0be94a11c1911b643a9108f231dd6f60df3fa9586b5d2e3e9e1fe
+  languageName: node
+  linkType: hard
+
 "semver@npm:^6.0.0":
   version: 6.3.0
   resolution: "semver@npm:6.3.0"
@@ -1415,5 +1440,16 @@ __metadata:
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
   checksum: 343617202af32df2a15a3be36a5a8c0c8545208f3d3dfbc6bb7c3e3b7e8c6f8e7485432e4f3b88da3031a6e20afa7c711eded32ddfb122896ac5d914e75848d5
+  languageName: node
+  linkType: hard
+
+"ytdl-core@npm:^4.9.1":
+  version: 4.9.1
+  resolution: "ytdl-core@npm:4.9.1"
+  dependencies:
+    m3u8stream: ^0.8.3
+    miniget: ^4.0.0
+    sax: ^1.1.3
+  checksum: a2401e9cf056706fd3d1fb5b3370e31694f7430357f5d646925b748e1d18cc499414672633095ceb2097600ec7da17cf367642a09e24bc5452404f5cbd253287
   languageName: node
   linkType: hard
