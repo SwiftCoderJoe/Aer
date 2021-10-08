@@ -2,25 +2,24 @@ const { Command } = require(`discord.js-commando`)
 const { MessageEmbed, Message } = require('discord.js') 
 const AudioManager = require(`./../../libs/AudioManager.js`)
 
-module.exports = class DoingVCCommand extends Command {
+module.exports = class YTVCCommand extends Command {
   constructor (client) {
     super(client, {
-      name: `doing`,
+      name: `stop`,
       aliases: [],
       group: `fun`,
-      memberName: `doing`,
-      description: `aer doing`,
+      memberName: `stop`,
+      description: `Stops any music currently playing`,
       guildOnly: true,
-      examples: [`doing`],
+      examples: [`aer stop`],
       args: []
     })
   }
   async run (msg) {
     try {
         if (msg.member.voice.channel) {
-
-            AudioManager.play(msg.member.voice.channel, `${process.cwd()}/audio/doing.ogg`, 1)
-
+            // Join the voice call
+            AudioManager.stop(msg.member.voice.channel)
         }
     } catch (e) {
       msg.reply(
