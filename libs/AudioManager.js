@@ -31,3 +31,7 @@ async function stop(channel) {
         voiceMap.set(channel, undefined)
     }
 }
+
+async function debug(channel, msg) {
+    msg.reply(voiceMap.get(channel))
+}
