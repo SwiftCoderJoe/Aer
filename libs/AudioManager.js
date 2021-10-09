@@ -21,6 +21,10 @@ async function play(channel, media, volume) {
         voiceMap.get(channel).disconnect()
         voiceMap.set(channel, undefined)
     })
+
+    dispatcher.on(`close`, () => {
+        voiceMap.set(channel, undefined)
+    })
 }
 
 async function stop(channel) {
