@@ -59,5 +59,24 @@
             "memberAddMessage" : "Welcome to hell, %USER%.",
             "memberRemoveMessage" : "%USER% lol bye"
         }
+    },
+    "894710836134834263" : {
+        "points" : {
+            "difficulty" : "1",
+            "infoChannel" : "896569985214865519",
+            "levelUpRoles" : {}
+        },
+        "moderation" : {
+            "modRoles" : [
+                "894715372303970305",
+                "894715449667907704"
+            ],
+            "allowSwearWords" : true
+        },
+        "members" : {
+            "infoChannel" : "896571470011043861",
+            "memberAddMessage" : "Welcome to %GUILDNAME%, %USER%!",
+            "memberRemoveMessage" : "%USER% bye. we never liked you lmao."
+        }
     }
 }
