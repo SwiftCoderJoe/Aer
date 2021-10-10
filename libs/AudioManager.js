@@ -18,7 +18,10 @@ async function play(channel, media, volume) {
     dispatcher.setVolume(volume)
 
     dispatcher.on(`close`, () => {
-        voiceMap.get(channel).disconnect()
+        // Assuming Aer hasn't already left, leave.
+        if ( voiceMap.get(channel) != undefined) {
+            voiceMap.get(channel).disconnect()
+        }
         voiceMap.set(channel, undefined)
     })
 }
