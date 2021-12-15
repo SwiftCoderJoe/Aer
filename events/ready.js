@@ -5,43 +5,52 @@ module.exports = (client, db, msg) => {
 
   var guilds = Array.from(client.guilds.cache.array())
   console.log(`DATABASE_CHECK: Running startup database check...`)
+
+  const stmt = db.prepare(`SELECT * FROM users`)
+  let userData = stmt.get()
+
   // Iterate through each guild, and then through every member of every guild
   for (guild of guilds) {
-    guild.members.fetch().then(guildMembersFetched => {let guildMembers = Array.from(guildMembersFetched.array())
+    guild.members.fetch()
+      .then(guildMembersFetched => {
+      
+        let guildMembers = Array.from(guildMembersFetched.array())
 
-    console.log(`DATABASE_CHECK: Checking guild ${guildMembers[0].guild}...`)
+        console.log(`DATABASE_CHECK: Checking guild ${guildMembers[0].guild}...`)
 
-    // Iterate through each user
-    for (guildUser of guildMembers) {
+        // Iterate through each user
+        for (guildUser of guildMembers) {
 
-      console.log(`DATABASE_CHECK: Checking user ${guildUser} from guild ${guildUser.guild}...`)
+          console.log(`DATABASE_CHECK: Checking user ${guildUser} from guild ${guildUser.guild}...`)
 
-      // Don't add bots to DB
-      if (guildUser.user.bot) continue;
+          // Don't add bots to DB
+          if (guildUser.user.bot) continue;
 
-      var key = `g${guildUser.guild.id}u${guildUser.user.id}`
+          var key = `g${guildUser.guild.id}u${guildUser.user.id}`
 
-      // Insert a new user if they don't already exist
+          // Insert a new user if they don't already exist
 
-      let stmt = db.prepare(`INSERT OR IGNORE INTO users (key) VALUES ("${key}")`)
-      let changes = stmt.run()
+          let stmt = db.prepare(`INSERT OR IGNORE INTO users (key) VALUES ("${key}")`)
+          let changes = stmt.run()
 
-      // If they didn't exist, log it and add default data
-      if (changes.changes === 1) {
+          // If they didn't exist, log it and add default data
+          if (changes.changes === 1) {
 
-        console.log(`DATABASE_CHECK: User ${guildUser} has been inserted with key ${key}. Adding default data...`)
-        addDefaultData(key, guildUser.id, guildMembers.guild);
+            console.log(`DATABASE_CHECK: User ${guildUser} has been inserted with key ${key}. Adding default data...`)
+            addDefaultData(key, guildUser.id, guildMembers.guild);
 
-      } else {
-        // If they do exist, audit their entry
-        auditUser(key, guildUser)
-      }
-    }
-  });
+          } else {
+            // If they do exist, audit their entry
+            auditUser(key, guildUser)
+          }
+        }
+      })
+      .then(() => {
+        console.log(`DATABASE_CHECK: DB check complete.`)
+        console.log(userData)
+      })
     
   }
-
-  console.log(`DATABASE_CHECK: DB check complete.`)
 
   
   function addDefaultData (key, UId, UGuild) {
@@ -52,19 +61,19 @@ module.exports = (client, db, msg) => {
   function auditUser (key, guildUser) {
     // Get all user data
     let stmt = db.prepare(`SELECT * FROM users WHERE key = "${key}";`)
-    const userData = stmt.get()
+    const specificUserData = stmt.get()
   
     // Compute level
     const curLevel = Math.floor(
       parseFloat(config[guildUser.guild.id].points.difficulty)
       *
-      Math.sqrt(userData.points)
+      Math.sqrt(specificUserData.points)
     )
   
-    console.log(`DATABASE_CHECK: Starting audit for user ${guildUser} of ${guildUser.guild}: points = ${userData.points}, actual level = ${userData.level}, computed level = ${curLevel}, lastPointMsg = ${userData.lastSent}, warns = ${userData.warnTimes}`);
+    console.log(`DATABASE_CHECK: Starting audit for user ${guildUser} of ${guildUser.guild}: points = ${specificUserData.points}, actual level = ${specificUserData.level}, computed level = ${curLevel}, lastPointMsg = ${specificUserData.lastSent}, warns = ${specificUserData.warnTimes}`);
   
     // If computed level != actual level, update it
-    if (userData.level != curLevel) {
+    if (specificUserData.level != curLevel) {
       console.log("Found incorrect level. Fixing...")
       stmt = db.prepare(`UPDATE users SET level = ${curLevel} WHERE key = "${key}"`)
       stmt.run();
