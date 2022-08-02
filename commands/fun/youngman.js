@@ -20,18 +20,13 @@ module.exports = class youngmanCommand extends Command {
       switch(msg.guild.id) {
         // HQ
         case `702241230225932292`:
+        case `894710836134834263`:
           msg.reply("youngman")
-          msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
+          msg.channel.send("https://media.discordapp.net/attachments/894710836650725397/995509893039665173/ym.gif")
           break;
 
         // People Talking
         case `716011492071440505`:
-          if (msg.channel.id == `844774637605879810`) {
-            msg.reply("youngman")
-            msg.channel.send("https://media.discordapp.net/attachments/724009203072761876/758293460255506462/image0_31-1.gif")
-          } else {
-            msg.reply(`No youngman outside of #mature-stuff.`)
-          }
           break;
 
         // Do nothing everywhere else
