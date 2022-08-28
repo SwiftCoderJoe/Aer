@@ -78,5 +78,10 @@ fs.readdir(`./events/`, (err, files) => {
   })
 })
 
-client.login(token.token);
-
+client.login(token.token).catch((reason) => {
+  console.log("Could not log in!")
+  console.log("Restarting the app in 5 seconds.")
+  setTimeout(() => {
+    process.exit(10)
+  }, 5000)
+});
